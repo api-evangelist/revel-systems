@@ -11,31 +11,33 @@ tags:
 - Restaurant
 - Retail
 - iPad
-- SaaS
 - Plans
-description: Placeholder plans/pricing artifact for Revel Systems. Replace with real published pricing once
-  the pipeline researches the provider's plans page.
-notes: Initial scaffold — plans/pricing have not yet been reconciled.
+description: Revel Systems is sold as a per-terminal SaaS subscription, typically with annual contracts.
+  Public pricing has been advertised at around $99/month per terminal historically; confirm current pricing
+  with sales.
+notes: API access is included with Revel subscriptions; partners may also need a developer agreement.
 sources:
-- https://revelsystems.com/
+- https://revelsystems.com/pricing/
+- https://developer.revelsystems.com/
 plans:
-- id: revel-systems-default
-  name: To Be Reconciled
-  type: enterprise
-  description: Initial scaffold; replace with provider plan tiers once pricing is reconciled.
+- id: revel-per-terminal
+  name: Revel Per-Terminal SaaS
+  type: paid
+  description: Per-terminal monthly SaaS subscription with annual commitment.
   entries:
-  - label: API Access
-    name: api_access
+  - label: Per Terminal
+    name: per_terminal
     type: flat
-    metric: varies
+    metric: terminal/month
     limit: -1
-    timeFrame: usage
+    timeFrame: monthly
     geo: global
     unit: 1
-    price: see https://revelsystems.com/
-    userMultiplied: false
+    price: see revelsystems.com/pricing
+    userMultiplied: true
   elements:
-  - name: Pending Reconciliation
+  - name: POS Software
+  - name: Open API Access
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

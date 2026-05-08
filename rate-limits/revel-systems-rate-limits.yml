@@ -11,22 +11,21 @@ tags:
 - Restaurant
 - Retail
 - iPad
-- SaaS
 - Rate Limiting
 - Quotas
 - Throttling
-description: Placeholder rate-limit artifact for Revel Systems. Replace with real limits once researched.
-notes: Initial scaffold — limits have not yet been reconciled.
+description: Revel Open API rate limits are not openly published. Honor 429 responses.
+notes: Contact Revel partner support for high-volume integration limits.
 sources:
-- https://revelsystems.com/
+- https://developer.revelsystems.com/
 responseCodes:
   throttled: 429
 limits:
-- name: Default
-  scope: account
-  metric: varies
-  limit: see provider documentation
-  notes: Pending reconciliation.
+- name: Default Open API
+  scope: establishment
+  metric: requests
+  limit: not publicly documented
+  notes: Honor 429.
 policies:
 - name: Backoff Strategy
   description: Clients should implement exponential backoff with jitter and honor any Retry-After header.

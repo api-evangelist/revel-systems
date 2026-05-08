@@ -11,14 +11,13 @@ tags:
 - Restaurant
 - Retail
 - iPad
-- SaaS
 - FinOps
 - Cost Management
 - FOCUS
-description: FOCUS-aligned FinOps placeholder for Revel Systems. Pipeline will replace with real billing details.
-notes: Initial scaffold — billing model has not yet been reconciled.
+description: FOCUS-aligned FinOps profile. Per-terminal SaaS plus optional payment processing and hardware.
+notes: Hardware separately invoiced.
 sources:
-- https://revelsystems.com/
+- https://revelsystems.com/pricing/
 - https://focus.finops.org/focus-specification/v1-3/
 alignedWith:
   framework: FinOps Foundation Framework
@@ -27,31 +26,31 @@ alignedWith:
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 publisherName: Revel Systems
-serviceCategory: POS
+serviceCategory: Payments & POS
 billingModel:
-  pricingCategory: To Be Reconciled
+  pricingCategory: Subscription
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
-  - Usage
   - Purchase
+  - Usage
   - Adjustment
 focusColumns:
   ServiceName: Revel Systems
-  ServiceCategory: POS
+  ServiceCategory: Payments & POS
   ProviderName: Revel Systems
   PublisherName: Revel Systems
   InvoiceIssuerName: Revel Systems
   BillingCurrency: USD
   ChargeCategory: Usage
 meters:
-- name: api_usage
-  description: Catch-all meter pending reconciliation.
-  unit: varies
+- name: per_terminal_saas
+  description: Per-terminal monthly SaaS.
+  unit: terminal
   aggregation: sum
   dimensions:
-  - account
-  - resource
+  - merchant
+  - establishment
 principles:
 - name: Visibility
   description: Pull provider invoices or usage exports until a self-serve usage feed is documented.

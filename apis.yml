@@ -2,28 +2,41 @@ aid: revel-systems
 url: https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/apis.yml
 name: Revel Systems
 x-type: company
-description: >-
-  Revel Systems is an iPad-based POS platform for restaurants and retail. Open APIs cover establishments, orders, customers, employees, and inventory.
+description: Revel Systems is a cloud iPad-based POS for restaurants and retailers. The Revel Open API
+  exposes products, orders, customers, employees, inventory, schedules, and reporting via a REST interface
+  for partner integrations.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - POS
-  - Restaurant
-  - Retail
-  - iPad
-  - SaaS
+- POS
+- Restaurant
+- Retail
+- iPad
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+- aid: revel:open-api
+  name: Revel Open API
+  description: REST API for the Revel POS platform. Exposes products, orders, customers, employees, schedules,
+    inventory, and reports. Authenticated via API key/secret per Revel establishment.
+  humanURL: https://developer.revelsystems.com/revelsystems/reference/welcome
+  tags:
+  - REST
+  - POS
+  properties:
+  - type: Documentation
+    url: https://developer.revelsystems.com/revelsystems/reference/welcome
 common:
-  - type: Website
-    url: https://revelsystems.com/
-  - type: Plans
-    url: plans/revel-systems-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/revel-systems-rate-limits.yml
-  - type: FinOps
-    url: finops/revel-systems-finops.yml
+- type: Website
+  url: https://revelsystems.com/
+- type: Developer
+  url: https://developer.revelsystems.com/
+- type: Plans
+  url: plans/revel-systems-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/revel-systems-rate-limits.yml
+- type: FinOps
+  url: finops/revel-systems-finops.yml
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
