@@ -1,7 +1,7 @@
 aid: revel-systems
 url: https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/apis.yml
 name: Revel Systems
-x-type: company
+kind: company
 description: Revel Systems is a cloud iPad-based POS for restaurants and retailers. The Revel Open API
   exposes products, orders, customers, employees, inventory, schedules, and reporting via a REST interface
   for partner integrations.
