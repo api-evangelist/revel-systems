@@ -1,0 +1,283 @@
+asyncapi: 2.6.0
+info:
+  title: Revel Webhooks
+  version: '2025.3.0'
+  description: >-
+    Revel Systems delivers event notifications to partner-registered HTTPS endpoints via webhooks.
+    Each event type is delivered by HTTP POST with a JSON body. Requests carry an HMAC-SHA1 signature
+    in the `X-Revel-Signature` header (computed from the request body and a shared secret) along with
+    instance, event-type, and message identification headers. Endpoints must respond with a 2XX status
+    within 10 seconds; failed deliveries are retried with exponential backoff over roughly 36 minutes.
+  contact:
+    name: Revel Systems Developer Support
+    url: https://developer.revelsystems.com/revelsystems/docs/webhooks
+  x-generated-from: documentation
+  x-source-url: https://developer.revelsystems.com/revelsystems/docs/webhooks
+  x-last-validated: '2026-06-03'
+defaultContentType: application/json
+channels:
+  order.finalized:
+    subscribe:
+      operationId: onOrderFinalized
+      summary: On Order Finalized
+      description: Triggered when an order is completed. Payload is a full OrderAllInOne object including items, modifiers, taxes, payments, and history.
+      message:
+        $ref: '#/components/messages/OrderFinalized'
+  customer.created:
+    subscribe:
+      operationId: onCustomerCreated
+      summary: On Customer Created
+      description: Triggered when a customer record is created.
+      message:
+        $ref: '#/components/messages/CustomerEvent'
+  customer.updated:
+    subscribe:
+      operationId: onCustomerUpdated
+      summary: On Customer Updated
+      description: Triggered when a customer record is updated.
+      message:
+        $ref: '#/components/messages/CustomerEvent'
+  rewardcard.created:
+    subscribe:
+      operationId: onRewardCardCreated
+      summary: On Reward Card Created
+      description: Triggered when a rewards card is created.
+      message:
+        $ref: '#/components/messages/RewardCardEvent'
+  inout.stock:
+    subscribe:
+      operationId: onStockChanged
+      summary: On Stock Changed
+      description: Triggered when a product, ingredient, or modifier stock status changes.
+      message:
+        $ref: '#/components/messages/StockStatus'
+  menu.updated:
+    subscribe:
+      operationId: onMenuUpdated
+      summary: On Menu Updated
+      description: Triggered when menu changes are pushed from the management console.
+      message:
+        $ref: '#/components/messages/MenuUpdated'
+  timesheet.created:
+    subscribe:
+      operationId: onTimesheetCreated
+      summary: On Timesheet Created
+      description: Triggered when a timesheet entry is created.
+      message:
+        $ref: '#/components/messages/TimesheetEvent'
+  timesheet.updated:
+    subscribe:
+      operationId: onTimesheetUpdated
+      summary: On Timesheet Updated
+      description: Triggered when a timesheet entry is updated.
+      message:
+        $ref: '#/components/messages/TimesheetEvent'
+  timesheet.deleted:
+    subscribe:
+      operationId: onTimesheetDeleted
+      summary: On Timesheet Deleted
+      description: Triggered when a timesheet entry is deleted.
+      message:
+        $ref: '#/components/messages/TimesheetEvent'
+  app.integration.changed:
+    subscribe:
+      operationId: onIntegrationChanged
+      summary: On Integration Changed
+      description: Triggered when integration access permissions are modified.
+      message:
+        $ref: '#/components/messages/IntegrationChanged'
+  ping:
+    subscribe:
+      operationId: onPing
+      summary: On Ping
+      description: System test event used to verify endpoint readiness.
+      message:
+        $ref: '#/components/messages/Ping'
+components:
+  messageTraits:
+    revelHeaders:
+      headers:
+        type: object
+        properties:
+          X-Revel-Signature:
+            type: string
+            description: HMAC-SHA1 signature of the request body computed with the shared secret.
+          X-Revel-Instance:
+            type: string
+            description: Customer instance name.
+          X-Revel-Event-Type:
+            type: string
+            description: Event category.
+          X-Revel-Event-Id:
+            type: string
+          X-Revel-Message-Id:
+            type: string
+          X-Revel-Establishment-Id:
+            type: string
+            description: Establishment identifier (optional).
+  messages:
+    OrderFinalized:
+      name: orderFinalized
+      title: Order Finalized
+      traits:
+      - $ref: '#/components/messageTraits/revelHeaders'
+      payload:
+        type: object
+        description: OrderAllInOne object with items, modifiers, taxes, payments, and order history.
+        properties:
+          event:
+            type: string
+            const: order.finalized
+          id:
+            type: integer
+            example: 1
+      examples:
+      - name: OrderFinalizedDefaultExample
+        summary: Default OrderFinalized example
+        x-microcks-default: true
+        payload:
+          event: order.finalized
+          id: 1
+    CustomerEvent:
+      name: customerEvent
+      title: Customer Event
+      traits:
+      - $ref: '#/components/messageTraits/revelHeaders'
+      payload:
+        type: object
+        description: Customer profile data with addresses, contact information, and loyalty details.
+        properties:
+          id: {type: integer, example: 1}
+          first_name: {type: string, example: "Jane"}
+          last_name: {type: string, example: "Doe"}
+          email: {type: string, format: email, example: "customer@example.com"}
+      examples:
+      - name: CustomerEventDefaultExample
+        summary: Default CustomerEvent example
+        x-microcks-default: true
+        payload:
+          id: 1
+          first_name: "Jane"
+          last_name: "Doe"
+          email: "customer@example.com"
+    RewardCardEvent:
+      name: rewardCardEvent
+      title: Reward Card Event
+      traits:
+      - $ref: '#/components/messageTraits/revelHeaders'
+      payload:
+        type: object
+        properties:
+          id: {type: integer, example: 1}
+          customer: {type: integer, example: 1}
+      examples:
+      - name: RewardCardEventDefaultExample
+        summary: Default RewardCardEvent example
+        x-microcks-default: true
+        payload:
+          id: 1
+          customer: 1
+    StockStatus:
+      name: stockStatus
+      title: Stock Status
+      traits:
+      - $ref: '#/components/messageTraits/revelHeaders'
+      payload:
+        type: object
+        properties:
+          id:
+            type: integer
+            description: Product or modifier ID.
+            example: 1
+          instock:
+            type: boolean
+            example: true
+          type:
+            type: string
+            enum: [product, modifier]
+            example: product
+          barcode:
+            type: string
+            example: "0123456789012"
+      examples:
+      - name: StockStatusDefaultExample
+        summary: Default StockStatus example
+        x-microcks-default: true
+        payload:
+          id: 1
+          instock: true
+          type: product
+          barcode: "0123456789012"
+    MenuUpdated:
+      name: menuUpdated
+      title: Menu Updated
+      traits:
+      - $ref: '#/components/messageTraits/revelHeaders'
+      payload:
+        type: object
+        properties:
+          event:
+            type: string
+            const: menu.updated
+      examples:
+      - name: MenuUpdatedDefaultExample
+        summary: Default MenuUpdated example
+        x-microcks-default: true
+        payload:
+          event: menu.updated
+    TimesheetEvent:
+      name: timesheetEvent
+      title: Timesheet Event
+      traits:
+      - $ref: '#/components/messageTraits/revelHeaders'
+      payload:
+        type: object
+        description: Labor tracking detail including clock times, break duration, department, role, wage, and action type.
+        properties:
+          id: {type: integer, example: 1}
+          employee: {type: integer, example: 1}
+          establishment: {type: integer, example: 1}
+          action: {type: string, example: "clock_in"}
+      examples:
+      - name: TimesheetEventDefaultExample
+        summary: Default TimesheetEvent example
+        x-microcks-default: true
+        payload:
+          id: 1
+          employee: 1
+          establishment: 1
+          action: "clock_in"
+    IntegrationChanged:
+      name: integrationChanged
+      title: Integration Changed
+      traits:
+      - $ref: '#/components/messageTraits/revelHeaders'
+      payload:
+        type: object
+        properties:
+          event:
+            type: string
+            const: app.integration.changed
+      examples:
+      - name: IntegrationChangedDefaultExample
+        summary: Default IntegrationChanged example
+        x-microcks-default: true
+        payload:
+          event: app.integration.changed
+    Ping:
+      name: ping
+      title: Ping
+      traits:
+      - $ref: '#/components/messageTraits/revelHeaders'
+      payload:
+        type: object
+        properties:
+          event:
+            type: string
+            const: ping
+      examples:
+      - name: PingDefaultExample
+        summary: Default Ping example
+        x-microcks-default: true
+        payload:
+          event: ping

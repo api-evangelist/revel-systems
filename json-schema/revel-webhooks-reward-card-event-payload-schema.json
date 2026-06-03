@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RewardCardEventPayload",
+  "description": "RewardCardEventPayload schema from Revel Webhooks",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-schema/revel-webhooks-reward-card-event-payload-schema.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "example": 1
+    },
+    "customer": {
+      "type": "integer",
+      "example": 1
+    }
+  }
+}

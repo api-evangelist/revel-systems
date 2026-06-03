@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "StockStatusPayload",
+  "description": "StockStatusPayload schema from Revel Webhooks",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-schema/revel-webhooks-stock-status-payload-schema.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Product or modifier ID.",
+      "example": 1
+    },
+    "instock": {
+      "type": "boolean",
+      "example": true
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "product",
+        "modifier"
+      ],
+      "example": "product"
+    },
+    "barcode": {
+      "type": "string",
+      "example": "0123456789012"
+    }
+  }
+}

@@ -1,0 +1,297 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Revel Open API — Orders
+  description: 'Orders surface of the Revel Open API. 4 operations. Lead operation: Get Orders. Self-contained Naftiko capability covering one Revel Systems business surface.'
+  tags:
+  - Revel Systems
+  - POS
+  - Orders
+  created: '2026-06-03'
+  modified: '2026-06-03'
+binds:
+- namespace: env
+  keys:
+    REVEL_API_KEY: REVEL_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: revel-open-api-orders
+    baseUri: https://yoursubdomain.revelup.com/resources
+    description: Revel Open API — Orders business capability. Self-contained, no shared references.
+    authentication:
+      type: apikey
+      key: API-AUTHENTICATION
+      value: '{{env.REVEL_API_KEY}}'
+      placement: header
+    resources:
+    - name: order
+      path: /Order/
+      operations:
+      - name: getOrders
+        method: GET
+        description: Get Orders
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          required: false
+          description: Maximum number of objects to return per page. Use `0` to disable pagination.
+        - name: offset
+          in: query
+          type: integer
+          required: false
+          description: Zero-based offset of the first object to return.
+        - name: fields
+          in: query
+          type: array
+          required: false
+          description: Comma-separated list of direct resource attributes to return (e.g. `id,name,price`).
+        - name: order_by
+          in: query
+          type: string
+          required: false
+          description: Field to sort by. Prefix with `-` for descending.
+        - name: id
+          in: query
+          type: integer
+          required: false
+          description: ''
+        - name: uuid
+          in: query
+          type: string
+          required: false
+          description: ''
+        - name: establishment
+          in: query
+          type: integer
+          required: false
+          description: ''
+        - name: customer
+          in: query
+          type: integer
+          required: false
+          description: ''
+        - name: closed
+          in: query
+          type: boolean
+          required: false
+          description: ''
+        - name: web_order
+          in: query
+          type: boolean
+          required: false
+          description: ''
+        - name: created_date
+          in: query
+          type: string
+          required: false
+          description: ''
+        - name: updated_date
+          in: query
+          type: string
+          required: false
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: order
+      path: /Order/
+      operations:
+      - name: createOrder
+        method: POST
+        description: Create Order
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: order-id
+      path: /Order/{id}/
+      operations:
+      - name: getOrder
+        method: GET
+        description: Get Order
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+          description: Numeric resource identifier.
+        - name: fields
+          in: query
+          type: array
+          required: false
+          description: Comma-separated list of direct resource attributes to return (e.g. `id,name,price`).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: order-id
+      path: /Order/{id}/
+      operations:
+      - name: updateOrder
+        method: PATCH
+        description: Update Order
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+          description: Numeric resource identifier.
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: revel-open-api-orders-rest
+    port: 8080
+    description: REST adapter for Revel Open API — Orders. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/order
+      name: order
+      description: REST surface for Get Orders.
+      operations:
+      - method: GET
+        name: getOrders
+        description: Get Orders
+        call: revel-open-api-orders.getOrders
+        with:
+          limit: rest.limit
+          offset: rest.offset
+          fields: rest.fields
+          order_by: rest.order_by
+          id: rest.id
+          uuid: rest.uuid
+          establishment: rest.establishment
+          customer: rest.customer
+          closed: rest.closed
+          web_order: rest.web_order
+          created_date: rest.created_date
+          updated_date: rest.updated_date
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/order
+      name: order
+      description: REST surface for Create Order.
+      operations:
+      - method: POST
+        name: createOrder
+        description: Create Order
+        call: revel-open-api-orders.createOrder
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/order/{id}
+      name: order-id
+      description: REST surface for Get Order.
+      operations:
+      - method: GET
+        name: getOrder
+        description: Get Order
+        call: revel-open-api-orders.getOrder
+        with:
+          id: rest.id
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/order/{id}
+      name: order-id
+      description: REST surface for Update Order.
+      operations:
+      - method: PATCH
+        name: updateOrder
+        description: Update Order
+        call: revel-open-api-orders.updateOrder
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: revel-open-api-orders-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Revel Open API — Orders. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: get-orders
+      description: Get Orders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: revel-open-api-orders.getOrders
+      with:
+        limit: tools.limit
+        offset: tools.offset
+        fields: tools.fields
+        order_by: tools.order_by
+        id: tools.id
+        uuid: tools.uuid
+        establishment: tools.establishment
+        customer: tools.customer
+        closed: tools.closed
+        web_order: tools.web_order
+        created_date: tools.created_date
+        updated_date: tools.updated_date
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-order
+      description: Create Order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: revel-open-api-orders.createOrder
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-order
+      description: Get Order
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: revel-open-api-orders.getOrder
+      with:
+        id: tools.id
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-order
+      description: Update Order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: revel-open-api-orders.updateOrder
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

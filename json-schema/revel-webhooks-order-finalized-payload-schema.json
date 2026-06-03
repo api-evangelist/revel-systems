@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OrderFinalizedPayload",
+  "description": "OrderAllInOne object with items, modifiers, taxes, payments, and order history.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-schema/revel-webhooks-order-finalized-payload-schema.json",
+  "type": "object",
+  "properties": {
+    "event": {
+      "type": "string",
+      "const": "order.finalized"
+    },
+    "id": {
+      "type": "integer",
+      "example": 1
+    }
+  }
+}

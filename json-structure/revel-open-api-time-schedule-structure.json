@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-structure/revel-open-api-time-schedule-structure.json",
+  "name": "TimeSchedule",
+  "description": "Represents a scheduled employee shift within an establishment.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int32",
+      "example": 1
+    },
+    "establishment": {
+      "type": "int32",
+      "example": 1
+    },
+    "employee": {
+      "type": "int32",
+      "description": "Foreign key to the scheduled employee.",
+      "example": 1
+    },
+    "role": {
+      "type": "int32",
+      "nullable": true,
+      "example": 42
+    },
+    "wage": {
+      "type": "float",
+      "nullable": true,
+      "example": 1.0
+    },
+    "start_time": {
+      "type": "datetime",
+      "example": "2026-06-01T12:00:00Z"
+    },
+    "end_time": {
+      "type": "datetime",
+      "example": "2026-06-01T12:00:00Z"
+    },
+    "created_date": {
+      "type": "datetime",
+      "example": "2026-06-01T12:00:00Z"
+    },
+    "updated_date": {
+      "type": "datetime",
+      "example": "2026-06-01T12:00:00Z"
+    },
+    "resource_uri": {
+      "type": "string",
+      "example": "/resources/Resource/1/"
+    }
+  }
+}

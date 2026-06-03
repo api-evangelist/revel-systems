@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-structure/revel-open-api-establishment-list-structure.json",
+  "name": "EstablishmentList",
+  "description": "EstablishmentList schema from Revel Open API",
+  "type": "object",
+  "properties": {
+    "meta": {
+      "$ref": "#/components/schemas/Meta"
+    },
+    "objects": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Establishment"
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TimeSchedule",
+  "description": "Represents a scheduled employee shift within an establishment.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-schema/revel-open-api-time-schedule-schema.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "example": 1
+    },
+    "establishment": {
+      "type": "integer",
+      "example": 1
+    },
+    "employee": {
+      "type": "integer",
+      "description": "Foreign key to the scheduled employee.",
+      "example": 1
+    },
+    "role": {
+      "type": "integer",
+      "nullable": true,
+      "example": 42
+    },
+    "wage": {
+      "type": "number",
+      "format": "float",
+      "nullable": true,
+      "example": 1.0
+    },
+    "start_time": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-06-01T12:00:00Z"
+    },
+    "end_time": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-06-01T12:00:00Z"
+    },
+    "created_date": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-06-01T12:00:00Z"
+    },
+    "updated_date": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-06-01T12:00:00Z"
+    },
+    "resource_uri": {
+      "type": "string",
+      "example": "/resources/Resource/1/"
+    }
+  }
+}

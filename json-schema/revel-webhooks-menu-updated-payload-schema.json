@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MenuUpdatedPayload",
+  "description": "MenuUpdatedPayload schema from Revel Webhooks",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-schema/revel-webhooks-menu-updated-payload-schema.json",
+  "type": "object",
+  "properties": {
+    "event": {
+      "type": "string",
+      "const": "menu.updated"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1,
+  "uuid": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+  "first_name": "Jane",
+  "last_name": "Doe",
+  "email": "customer@example.com",
+  "phone_number": "+15551234567",
+  "ref_number": "REF-1001",
+  "active": true,
+  "total_purchases": 42,
+  "total_visits": 42,
+  "created_date": "2026-06-01T12:00:00Z",
+  "updated_date": "2026-06-01T12:00:00Z",
+  "resource_uri": "/resources/Resource/1/"
+}

@@ -1,0 +1,297 @@
+# Spectral ruleset for the Revel Open API
+# Enforces the conventions observed in openapi/revel-open-api-openapi.yml:
+#   - PascalCase resource paths with trailing slash (Django Tastypie style)
+#   - snake_case schema properties and query parameters
+#   - camelCase operationIds with verb prefixes (get/create/update/delete)
+#   - Title Case tags
+#   - API-AUTHENTICATION header API key auth
+#   - offset/limit pagination
+extends: [[spectral:oas, off]]
+rules:
+
+  # ---------------- INFO / METADATA ----------------
+  info-title-revel:
+    description: API title should reference Revel.
+    severity: warn
+    given: $.info.title
+    then:
+      function: pattern
+      functionOptions:
+        match: "Revel"
+  info-description-required:
+    description: Info object must have a description of reasonable length.
+    severity: warn
+    given: $.info
+    then:
+      field: description
+      function: defined
+  info-version-required:
+    description: Info object must declare a version.
+    severity: error
+    given: $.info
+    then:
+      field: version
+      function: defined
+  info-contact-required:
+    description: Provide contact information.
+    severity: info
+    given: $.info
+    then:
+      field: contact
+      function: defined
+
+  # ---------------- OPENAPI VERSION ----------------
+  openapi-version-3:
+    description: Specs should target OpenAPI 3.0.x.
+    severity: warn
+    given: $.openapi
+    then:
+      function: pattern
+      functionOptions:
+        match: "^3\\.0\\."
+
+  # ---------------- SERVERS ----------------
+  servers-defined:
+    description: At least one server must be defined.
+    severity: error
+    given: $.servers
+    then:
+      function: length
+      functionOptions:
+        min: 1
+  servers-https:
+    description: Server URLs must use HTTPS.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+  servers-description:
+    description: Each server should have a description.
+    severity: warn
+    given: $.servers[*]
+    then:
+      field: description
+      function: defined
+
+  # ---------------- PATHS ----------------
+  paths-pascalcase-resource:
+    description: Resource path segments use PascalCase (Tastypie resource names), e.g. /Order/.
+    severity: warn
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/[A-Z][A-Za-z]+/(\\{[a-z_]+\\}/)?$"
+  paths-trailing-slash:
+    description: Tastypie endpoints terminate with a trailing slash.
+    severity: warn
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: "/$"
+  paths-no-query-string:
+    description: Path keys must not contain query strings.
+    severity: error
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "\\?"
+
+  # ---------------- OPERATIONS ----------------
+  operation-summary-required:
+    description: Every operation must have a summary.
+    severity: error
+    given: $.paths[*][get,post,patch,put,delete]
+    then:
+      field: summary
+      function: defined
+  operation-description-required:
+    description: Every operation must have a description.
+    severity: warn
+    given: $.paths[*][get,post,patch,put,delete]
+    then:
+      field: description
+      function: defined
+  operation-operationid-required:
+    description: Every operation must have an operationId.
+    severity: error
+    given: $.paths[*][get,post,patch,put,delete]
+    then:
+      field: operationId
+      function: defined
+  operation-operationid-camelcase-verb:
+    description: operationId is camelCase and begins with a CRUD verb.
+    severity: warn
+    given: $.paths[*][get,post,patch,put,delete].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(get|list|create|update|delete)[A-Z][A-Za-z0-9]*$"
+  operation-tags-required:
+    description: Every operation must be tagged.
+    severity: warn
+    given: $.paths[*][get,post,patch,put,delete]
+    then:
+      field: tags
+      function: truthy
+  operation-microcks-extension:
+    description: Operations should carry x-microcks-operation for mock-server compatibility.
+    severity: info
+    given: $.paths[*][get,post,patch,put,delete]
+    then:
+      field: x-microcks-operation
+      function: defined
+
+  # ---------------- TAGS ----------------
+  tags-global-defined:
+    description: A global tags array should be declared.
+    severity: warn
+    given: $
+    then:
+      field: tags
+      function: defined
+  tag-title-case:
+    description: Tag names use Title Case.
+    severity: warn
+    given: $.tags[*].name
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][A-Za-z]+( [A-Z][A-Za-z]+)*$"
+  tag-description:
+    description: Each declared tag should have a description.
+    severity: info
+    given: $.tags[*]
+    then:
+      field: description
+      function: defined
+
+  # ---------------- PARAMETERS ----------------
+  parameter-description-required:
+    description: Parameters should have descriptions.
+    severity: info
+    given: $.paths[*][*].parameters[*]
+    then:
+      field: description
+      function: defined
+  parameter-snake-case:
+    description: Query and path parameter names use snake_case (allowing Tastypie __ field lookups).
+    severity: warn
+    given: $.paths[*][*].parameters[?(@.in=='query' || @.in=='path')].name
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-z0-9_]*$"
+  parameter-pagination-names:
+    description: Use limit/offset for pagination, not page/size.
+    severity: info
+    given: $.paths[*][get].parameters[?(@.in=='query')].name
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "^(page|page_size|per_page|size)$"
+
+  # ---------------- REQUEST BODIES ----------------
+  request-body-json:
+    description: Request bodies must offer application/json.
+    severity: warn
+    given: $.paths[*][post,patch,put].requestBody.content
+    then:
+      field: application/json
+      function: defined
+
+  # ---------------- RESPONSES ----------------
+  response-2xx-required:
+    description: Every operation must define at least one 2xx response.
+    severity: error
+    given: $.paths[*][get,post,patch,put,delete].responses
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          patternProperties:
+            "^2": {}
+          minProperties: 1
+  response-401-defined:
+    description: Authenticated operations should document a 401 response.
+    severity: info
+    given: $.paths[*][get,post,patch,put,delete].responses
+    then:
+      field: "401"
+      function: defined
+  response-429-on-reads:
+    description: List operations should document a 429 rate-limit response.
+    severity: info
+    given: $.paths[*][get].responses
+    then:
+      field: "429"
+      function: defined
+
+  # ---------------- SCHEMAS ----------------
+  schema-property-snake-case:
+    description: Schema properties use snake_case.
+    severity: warn
+    given: $.components.schemas[*].properties[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-z0-9_]*$"
+  schema-property-typed:
+    description: Schema properties must declare a type or a $ref.
+    severity: warn
+    given: $.components.schemas[*].properties[*]
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: [type]
+            - required: ["$ref"]
+  schema-resource-uri-present:
+    description: Tastypie resources expose a resource_uri field.
+    severity: info
+    given: $.components.schemas[?(@.properties && @.properties.id)].properties
+    then:
+      field: resource_uri
+      function: defined
+
+  # ---------------- SECURITY ----------------
+  security-global-defined:
+    description: A global security requirement must be declared.
+    severity: warn
+    given: $
+    then:
+      field: security
+      function: defined
+  security-scheme-apikey-header:
+    description: The API key security scheme is delivered via the API-AUTHENTICATION header.
+    severity: warn
+    given: $.components.securitySchemes[?(@.type=='apiKey')]
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          properties:
+            in: { const: header }
+            name: { const: API-AUTHENTICATION }
+
+  # ---------------- HTTP METHOD CONVENTIONS ----------------
+  get-no-request-body:
+    description: GET operations must not declare a request body.
+    severity: error
+    given: $.paths[*].get
+    then:
+      field: requestBody
+      function: undefined
+  write-has-request-body:
+    description: POST/PUT/PATCH operations should declare a request body.
+    severity: warn
+    given: $.paths[*][post,put,patch]
+    then:
+      field: requestBody
+      function: defined

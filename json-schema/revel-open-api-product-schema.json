@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Product",
+  "description": "Product schema from Revel Open API",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-schema/revel-open-api-product-schema.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "example": 1
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "example": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
+    },
+    "name": {
+      "type": "string",
+      "example": "Cappuccino"
+    },
+    "description": {
+      "type": "string",
+      "nullable": true,
+      "example": "Premium roast"
+    },
+    "price": {
+      "type": "number",
+      "format": "float",
+      "example": 4.99
+    },
+    "cost": {
+      "type": "number",
+      "format": "float",
+      "nullable": true,
+      "example": 1.0
+    },
+    "barcode": {
+      "type": "string",
+      "nullable": true,
+      "example": "0123456789012"
+    },
+    "sku": {
+      "type": "string",
+      "nullable": true,
+      "example": "CAP-001"
+    },
+    "category": {
+      "type": "integer",
+      "description": "Foreign key to product category.",
+      "example": 1
+    },
+    "active": {
+      "type": "boolean",
+      "example": true
+    },
+    "display_online": {
+      "type": "boolean",
+      "example": true
+    },
+    "dining_options": {
+      "type": "string",
+      "nullable": true,
+      "example": "dine_in"
+    },
+    "establishment": {
+      "type": "integer",
+      "nullable": true,
+      "example": 1
+    },
+    "attribute_parent": {
+      "type": "integer",
+      "nullable": true,
+      "example": 42
+    },
+    "attribute_type": {
+      "type": "integer",
+      "nullable": true,
+      "example": 42
+    },
+    "course_number": {
+      "type": "integer",
+      "nullable": true,
+      "example": 42
+    },
+    "created_date": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-06-01T12:00:00Z"
+    },
+    "updated_date": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-06-01T12:00:00Z"
+    },
+    "resource_uri": {
+      "type": "string",
+      "example": "/resources/Resource/1/"
+    }
+  }
+}

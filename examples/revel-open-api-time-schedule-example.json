@@ -1,0 +1,12 @@
+{
+  "id": 1,
+  "establishment": 1,
+  "employee": 1,
+  "role": 42,
+  "wage": 1.0,
+  "start_time": "2026-06-01T12:00:00Z",
+  "end_time": "2026-06-01T12:00:00Z",
+  "created_date": "2026-06-01T12:00:00Z",
+  "updated_date": "2026-06-01T12:00:00Z",
+  "resource_uri": "/resources/Resource/1/"
+}

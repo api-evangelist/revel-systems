@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-structure/revel-webhooks-ping-payload-structure.json",
+  "name": "PingPayload",
+  "description": "PingPayload schema from Revel Webhooks",
+  "type": "object",
+  "properties": {
+    "event": {
+      "type": "string",
+      "const": "ping"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-structure/revel-webhooks-order-finalized-payload-structure.json",
+  "name": "OrderFinalizedPayload",
+  "description": "OrderAllInOne object with items, modifiers, taxes, payments, and order history.",
+  "type": "object",
+  "properties": {
+    "event": {
+      "type": "string",
+      "const": "order.finalized"
+    },
+    "id": {
+      "type": "int32",
+      "example": 1
+    }
+  }
+}

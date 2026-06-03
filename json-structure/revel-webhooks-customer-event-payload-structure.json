@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-structure/revel-webhooks-customer-event-payload-structure.json",
+  "name": "CustomerEventPayload",
+  "description": "Customer profile data with addresses, contact information, and loyalty details.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int32",
+      "example": 1
+    },
+    "first_name": {
+      "type": "string",
+      "example": "Jane"
+    },
+    "last_name": {
+      "type": "string",
+      "example": "Doe"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "example": "customer@example.com"
+    }
+  }
+}

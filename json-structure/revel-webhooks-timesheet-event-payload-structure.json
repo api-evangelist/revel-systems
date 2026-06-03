@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-structure/revel-webhooks-timesheet-event-payload-structure.json",
+  "name": "TimesheetEventPayload",
+  "description": "Labor tracking detail including clock times, break duration, department, role, wage, and action type.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int32",
+      "example": 1
+    },
+    "employee": {
+      "type": "int32",
+      "example": 1
+    },
+    "establishment": {
+      "type": "int32",
+      "example": 1
+    },
+    "action": {
+      "type": "string",
+      "example": "clock_in"
+    }
+  }
+}

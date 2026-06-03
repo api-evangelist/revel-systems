@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-structure/revel-open-api-establishment-structure.json",
+  "name": "Establishment",
+  "description": "Establishment schema from Revel Open API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int32",
+      "example": 1
+    },
+    "uuid": {
+      "type": "uuid",
+      "example": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
+    },
+    "name": {
+      "type": "string",
+      "example": "Cappuccino"
+    },
+    "ach_payments_enabled": {
+      "type": "boolean",
+      "description": "Whether ACH payments are enabled (US establishments).",
+      "example": true
+    },
+    "created_date": {
+      "type": "datetime",
+      "example": "2026-06-01T12:00:00Z"
+    },
+    "updated_date": {
+      "type": "datetime",
+      "example": "2026-06-01T12:00:00Z"
+    },
+    "resource_uri": {
+      "type": "string",
+      "example": "/resources/Resource/1/"
+    }
+  }
+}

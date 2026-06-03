@@ -1,0 +1,21 @@
+{
+  "id": 1,
+  "uuid": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+  "name": "Cappuccino",
+  "description": "Premium roast",
+  "price": 4.99,
+  "cost": 1.0,
+  "barcode": "0123456789012",
+  "sku": "CAP-001",
+  "category": 1,
+  "active": true,
+  "display_online": true,
+  "dining_options": "dine_in",
+  "establishment": 1,
+  "attribute_parent": 42,
+  "attribute_type": 42,
+  "course_number": 42,
+  "created_date": "2026-06-01T12:00:00Z",
+  "updated_date": "2026-06-01T12:00:00Z",
+  "resource_uri": "/resources/Resource/1/"
+}

@@ -1,0 +1,254 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: Revel Systems
+  description: >-
+    Unified taxonomy for the Revel Open API, mapping the operational dimension (REST
+    resources, actions, schemas, parameters, and authentication exposed by the API) to the
+    capability dimension (the Naftiko REST and MCP capabilities composed from those operations).
+    The API follows Django Tastypie conventions, with PascalCase resource paths, snake_case
+    fields, and an objects/meta list envelope.
+  created: '2026-06-03'
+  modified: '2026-06-03'
+  tags:
+    - Revel Systems
+    - POS
+    - Restaurant
+    - Retail
+
+operational:
+  apis:
+    - name: Revel Open API
+      namespace: revel-open-api
+      version: '2025.3.0'
+      baseUrl: https://yoursubdomain.revelup.com/resources
+      status: active
+    - name: Revel Webhooks
+      namespace: revel-webhooks
+      version: '2025.3.0'
+      transport: https-post
+      status: active
+  resources:
+    - name: orders
+      api: Revel Open API
+      path: /Order/
+      actions: [list, get, create, update]
+    - name: products
+      api: Revel Open API
+      path: /Product/
+      actions: [list, get, create]
+    - name: customers
+      api: Revel Open API
+      path: /Customer/
+      actions: [list, get, create]
+    - name: establishments
+      api: Revel Open API
+      path: /Establishment/
+      actions: [list]
+    - name: timeSchedules
+      api: Revel Open API
+      path: /TimeSchedule/
+      actions: [list, create]
+  actions:
+    - verb: list
+      httpMethod: GET
+      pattern: query
+    - verb: get
+      httpMethod: GET
+      pattern: read
+    - verb: create
+      httpMethod: POST
+      pattern: write
+    - verb: update
+      httpMethod: PATCH
+      pattern: write
+  schemas:
+    core:
+      - Order
+      - Product
+      - Customer
+      - Establishment
+      - TimeSchedule
+    envelope:
+      - Meta
+      - OrderList
+      - ProductList
+      - CustomerList
+      - EstablishmentList
+      - TimeScheduleList
+    events:
+      - OrderFinalized
+      - CustomerEvent
+      - StockStatus
+      - MenuUpdated
+      - TimesheetEvent
+      - RewardCardEvent
+      - IntegrationChanged
+      - Ping
+  parameters:
+    pagination:
+      - limit
+      - offset
+    identifiers:
+      - id
+      - uuid
+    filters:
+      - name
+      - barcode
+      - sku
+      - category
+      - active
+      - establishment
+      - customer
+      - email
+      - phone_number
+      - created_date
+      - updated_date
+    projection:
+      - fields
+      - order_by
+    fieldLookups:
+      description: Django Tastypie field-lookup suffixes appended with a double underscore.
+      operators: [exact, iexact, contains, icontains, startswith, endswith, lt, lte, gt, gte, in, range, isnull]
+  enums:
+    stockTypes: [product, modifier]
+    webhookEvents:
+      - order.finalized
+      - customer.created
+      - customer.updated
+      - rewardcard.created
+      - inout.stock
+      - menu.updated
+      - timesheet.created
+      - timesheet.updated
+      - timesheet.deleted
+      - app.integration.changed
+      - ping
+  authentication:
+    - scheme: API Key Secret
+      type: apiKey
+      placement: header
+      header: API-AUTHENTICATION
+      format: "key:secret"
+      alternative: api_key and api_secret query parameters
+      appliesTo: [Revel Open API]
+    - scheme: HMAC-SHA1 Signature
+      type: signature
+      header: X-Revel-Signature
+      appliesTo: [Revel Webhooks]
+
+capability:
+  workflows:
+    - name: Orders
+      file: capabilities/revel-open-api-orders.yaml
+      api: Revel Open API
+      tools: 4
+      domains: [Sales]
+      personas: [Integration Developer, Operations Analyst]
+    - name: Products
+      file: capabilities/revel-open-api-products.yaml
+      api: Revel Open API
+      tools: 3
+      domains: [Catalog]
+      personas: [Integration Developer, Menu Manager]
+    - name: Customers
+      file: capabilities/revel-open-api-customers.yaml
+      api: Revel Open API
+      tools: 3
+      domains: [CRM]
+      personas: [Integration Developer, Marketing Analyst]
+    - name: Establishments
+      file: capabilities/revel-open-api-establishments.yaml
+      api: Revel Open API
+      tools: 1
+      domains: [Locations]
+      personas: [Integration Developer]
+    - name: Scheduling
+      file: capabilities/revel-open-api-scheduling.yaml
+      api: Revel Open API
+      tools: 2
+      domains: [Labor]
+      personas: [Integration Developer, Store Manager]
+  personas:
+    - id: integration-developer
+      name: Integration Developer
+      description: Builds partner integrations against the Revel Open API.
+      workflows: [Orders, Products, Customers, Establishments, Scheduling]
+    - id: operations-analyst
+      name: Operations Analyst
+      description: Pulls order and sales data for reporting.
+      workflows: [Orders]
+    - id: menu-manager
+      name: Menu Manager
+      description: Maintains the product catalog and menu.
+      workflows: [Products]
+    - id: marketing-analyst
+      name: Marketing Analyst
+      description: Works with customer and loyalty data.
+      workflows: [Customers]
+    - id: store-manager
+      name: Store Manager
+      description: Manages employee shifts and timesheets at a location.
+      workflows: [Scheduling]
+  domains:
+    - name: Sales
+      resources: [orders]
+    - name: Catalog
+      resources: [products]
+    - name: CRM
+      resources: [customers]
+    - name: Locations
+      resources: [establishments]
+    - name: Labor
+      resources: [timeSchedules]
+  namespaces:
+    - consumed: revel-open-api-orders
+      rest: revel-open-api-orders-rest
+      mcp: revel-open-api-orders-mcp
+      restPort: 8080
+      mcpPort: 9090
+    - consumed: revel-open-api-products
+      rest: revel-open-api-products-rest
+      mcp: revel-open-api-products-mcp
+      restPort: 8080
+      mcpPort: 9090
+    - consumed: revel-open-api-customers
+      rest: revel-open-api-customers-rest
+      mcp: revel-open-api-customers-mcp
+      restPort: 8080
+      mcpPort: 9090
+    - consumed: revel-open-api-establishments
+      rest: revel-open-api-establishments-rest
+      mcp: revel-open-api-establishments-mcp
+      restPort: 8080
+      mcpPort: 9090
+    - consumed: revel-open-api-scheduling
+      rest: revel-open-api-scheduling-rest
+      mcp: revel-open-api-scheduling-mcp
+      restPort: 8080
+      mcpPort: 9090
+  binds:
+    - key: REVEL_API_KEY
+      workflows: [Orders, Products, Customers, Establishments, Scheduling]
+
+crossReference:
+  - resource: orders
+    operations: [getOrders, getOrder, createOrder, updateOrder]
+    workflows: [Orders]
+    personas: [Integration Developer, Operations Analyst]
+  - resource: products
+    operations: [getProducts, getProduct, createProduct]
+    workflows: [Products]
+    personas: [Integration Developer, Menu Manager]
+  - resource: customers
+    operations: [getCustomers, getCustomer, createCustomer]
+    workflows: [Customers]
+    personas: [Integration Developer, Marketing Analyst]
+  - resource: establishments
+    operations: [getEstablishments]
+    workflows: [Establishments]
+    personas: [Integration Developer]
+  - resource: timeSchedules
+    operations: [getTimeSchedules, createTimeSchedule]
+    workflows: [Scheduling]
+    personas: [Integration Developer, Store Manager]

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Customer",
+  "description": "Customer schema from Revel Open API",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-schema/revel-open-api-customer-schema.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "example": 1
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "example": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
+    },
+    "first_name": {
+      "type": "string",
+      "example": "Jane"
+    },
+    "last_name": {
+      "type": "string",
+      "example": "Doe"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "nullable": true,
+      "example": "customer@example.com"
+    },
+    "phone_number": {
+      "type": "string",
+      "nullable": true,
+      "example": "+15551234567"
+    },
+    "ref_number": {
+      "type": "string",
+      "nullable": true,
+      "example": "REF-1001"
+    },
+    "active": {
+      "type": "boolean",
+      "example": true
+    },
+    "total_purchases": {
+      "type": "integer",
+      "example": 42
+    },
+    "total_visits": {
+      "type": "integer",
+      "example": 42
+    },
+    "created_date": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-06-01T12:00:00Z"
+    },
+    "updated_date": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-06-01T12:00:00Z"
+    },
+    "resource_uri": {
+      "type": "string",
+      "example": "/resources/Resource/1/"
+    }
+  }
+}

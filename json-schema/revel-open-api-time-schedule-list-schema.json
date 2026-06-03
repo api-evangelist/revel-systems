@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TimeScheduleList",
+  "description": "TimeScheduleList schema from Revel Open API",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-schema/revel-open-api-time-schedule-list-schema.json",
+  "type": "object",
+  "properties": {
+    "meta": {
+      "$ref": "#/components/schemas/Meta"
+    },
+    "objects": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TimeSchedule"
+      }
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Order",
+  "description": "Order schema from Revel Open API",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-schema/revel-open-api-order-schema.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "example": 1
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "example": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
+    },
+    "establishment": {
+      "type": "integer",
+      "description": "Foreign key to Establishment.",
+      "example": 1
+    },
+    "customer": {
+      "type": "integer",
+      "nullable": true,
+      "description": "Foreign key to Customer.",
+      "example": 1
+    },
+    "created_by": {
+      "type": "integer",
+      "description": "Employee who created the order.",
+      "example": 1
+    },
+    "call_number": {
+      "type": "integer",
+      "nullable": true,
+      "example": 42
+    },
+    "call_name": {
+      "type": "string",
+      "nullable": true,
+      "example": "Window"
+    },
+    "running_tax_number": {
+      "type": "integer",
+      "nullable": true,
+      "example": 42
+    },
+    "web_order": {
+      "type": "boolean",
+      "example": true
+    },
+    "is_invoice": {
+      "type": "boolean",
+      "example": true
+    },
+    "closed": {
+      "type": "boolean",
+      "example": true
+    },
+    "printed": {
+      "type": "boolean",
+      "example": true
+    },
+    "has_items": {
+      "type": "boolean",
+      "example": true
+    },
+    "has_history": {
+      "type": "boolean",
+      "example": true
+    },
+    "dining_option": {
+      "type": "integer",
+      "nullable": true,
+      "example": 42
+    },
+    "delivery_employee": {
+      "type": "integer",
+      "nullable": true,
+      "example": 42
+    },
+    "device_id": {
+      "type": "integer",
+      "nullable": true,
+      "example": 1
+    },
+    "local_id": {
+      "type": "string",
+      "nullable": true,
+      "example": "LOC-1"
+    },
+    "pickup_time": {
+      "type": "string",
+      "format": "date-time",
+      "nullable": true,
+      "example": "2026-06-01T12:00:00Z"
+    },
+    "created_date": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-06-01T12:00:00Z"
+    },
+    "updated_date": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-06-01T12:00:00Z"
+    },
+    "resource_uri": {
+      "type": "string",
+      "example": "/resources/Resource/1/"
+    }
+  }
+}

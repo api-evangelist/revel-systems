@@ -1,0 +1,4 @@
+{
+  "event": "order.finalized",
+  "id": 1
+}

@@ -1,0 +1,220 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "revel": "https://revelsystems.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "CustomerList": "revel:CustomerList",
+    "Customer": "revel:Customer",
+    "EstablishmentList": "revel:EstablishmentList",
+    "Establishment": "revel:Establishment",
+    "OrderList": "revel:OrderList",
+    "Order": "revel:Order",
+    "ProductList": "revel:ProductList",
+    "Product": "revel:Product",
+    "TimeScheduleList": "revel:TimeScheduleList",
+    "TimeSchedule": "revel:TimeSchedule",
+    "meta": {
+      "@id": "revel:meta",
+      "@type": "xsd:string"
+    },
+    "objects": {
+      "@id": "revel:objects",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "revel:id",
+      "@type": "xsd:integer"
+    },
+    "uuid": {
+      "@id": "revel:uuid",
+      "@type": "xsd:string"
+    },
+    "firstName": {
+      "@id": "revel:first_name",
+      "@type": "xsd:string"
+    },
+    "lastName": {
+      "@id": "revel:last_name",
+      "@type": "xsd:string"
+    },
+    "email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "phoneNumber": {
+      "@id": "revel:phone_number",
+      "@type": "xsd:string"
+    },
+    "refNumber": {
+      "@id": "revel:ref_number",
+      "@type": "xsd:string"
+    },
+    "active": {
+      "@id": "revel:active",
+      "@type": "xsd:boolean"
+    },
+    "totalPurchases": {
+      "@id": "revel:total_purchases",
+      "@type": "xsd:integer"
+    },
+    "totalVisits": {
+      "@id": "revel:total_visits",
+      "@type": "xsd:integer"
+    },
+    "createdDate": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updatedDate": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "resourceUri": {
+      "@id": "revel:resource_uri",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "achPaymentsEnabled": {
+      "@id": "revel:ach_payments_enabled",
+      "@type": "xsd:boolean"
+    },
+    "establishment": {
+      "@id": "revel:establishment",
+      "@type": "xsd:integer"
+    },
+    "customer": {
+      "@id": "revel:customer",
+      "@type": "xsd:integer"
+    },
+    "createdBy": {
+      "@id": "revel:created_by",
+      "@type": "xsd:integer"
+    },
+    "callNumber": {
+      "@id": "revel:call_number",
+      "@type": "xsd:integer"
+    },
+    "callName": {
+      "@id": "revel:call_name",
+      "@type": "xsd:string"
+    },
+    "runningTaxNumber": {
+      "@id": "revel:running_tax_number",
+      "@type": "xsd:integer"
+    },
+    "webOrder": {
+      "@id": "revel:web_order",
+      "@type": "xsd:boolean"
+    },
+    "isInvoice": {
+      "@id": "revel:is_invoice",
+      "@type": "xsd:boolean"
+    },
+    "closed": {
+      "@id": "revel:closed",
+      "@type": "xsd:boolean"
+    },
+    "printed": {
+      "@id": "revel:printed",
+      "@type": "xsd:boolean"
+    },
+    "hasItems": {
+      "@id": "revel:has_items",
+      "@type": "xsd:boolean"
+    },
+    "hasHistory": {
+      "@id": "revel:has_history",
+      "@type": "xsd:boolean"
+    },
+    "diningOption": {
+      "@id": "revel:dining_option",
+      "@type": "xsd:integer"
+    },
+    "deliveryEmployee": {
+      "@id": "revel:delivery_employee",
+      "@type": "xsd:integer"
+    },
+    "deviceId": {
+      "@id": "revel:device_id",
+      "@type": "xsd:integer"
+    },
+    "localId": {
+      "@id": "revel:local_id",
+      "@type": "xsd:string"
+    },
+    "pickupTime": {
+      "@id": "revel:pickup_time",
+      "@type": "xsd:dateTime"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "price": {
+      "@id": "revel:price",
+      "@type": "xsd:float"
+    },
+    "cost": {
+      "@id": "revel:cost",
+      "@type": "xsd:float"
+    },
+    "barcode": {
+      "@id": "revel:barcode",
+      "@type": "xsd:string"
+    },
+    "sku": {
+      "@id": "revel:sku",
+      "@type": "xsd:string"
+    },
+    "category": {
+      "@id": "revel:category",
+      "@type": "xsd:integer"
+    },
+    "displayOnline": {
+      "@id": "revel:display_online",
+      "@type": "xsd:boolean"
+    },
+    "diningOptions": {
+      "@id": "revel:dining_options",
+      "@type": "xsd:string"
+    },
+    "attributeParent": {
+      "@id": "revel:attribute_parent",
+      "@type": "xsd:integer"
+    },
+    "attributeType": {
+      "@id": "revel:attribute_type",
+      "@type": "xsd:integer"
+    },
+    "courseNumber": {
+      "@id": "revel:course_number",
+      "@type": "xsd:integer"
+    },
+    "employee": {
+      "@id": "revel:employee",
+      "@type": "xsd:integer"
+    },
+    "role": {
+      "@id": "revel:role",
+      "@type": "xsd:integer"
+    },
+    "wage": {
+      "@id": "revel:wage",
+      "@type": "xsd:float"
+    },
+    "startTime": {
+      "@id": "revel:start_time",
+      "@type": "xsd:dateTime"
+    },
+    "endTime": {
+      "@id": "revel:end_time",
+      "@type": "xsd:dateTime"
+    }
+  }
+}

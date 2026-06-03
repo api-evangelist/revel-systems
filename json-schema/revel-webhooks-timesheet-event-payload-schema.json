@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TimesheetEventPayload",
+  "description": "Labor tracking detail including clock times, break duration, department, role, wage, and action type.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-schema/revel-webhooks-timesheet-event-payload-schema.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "example": 1
+    },
+    "employee": {
+      "type": "integer",
+      "example": 1
+    },
+    "establishment": {
+      "type": "integer",
+      "example": 1
+    },
+    "action": {
+      "type": "string",
+      "example": "clock_in"
+    }
+  }
+}

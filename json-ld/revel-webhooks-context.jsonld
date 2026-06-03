@@ -1,0 +1,65 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "revel": "https://revelsystems.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "CustomerEventPayload": "revel:CustomerEventPayload",
+    "IntegrationChangedPayload": "revel:IntegrationChangedPayload",
+    "MenuUpdatedPayload": "revel:MenuUpdatedPayload",
+    "OrderFinalizedPayload": "revel:OrderFinalizedPayload",
+    "PingPayload": "revel:PingPayload",
+    "RewardCardEventPayload": "revel:RewardCardEventPayload",
+    "StockStatusPayload": "revel:StockStatusPayload",
+    "TimesheetEventPayload": "revel:TimesheetEventPayload",
+    "id": {
+      "@id": "revel:id",
+      "@type": "xsd:integer"
+    },
+    "firstName": {
+      "@id": "revel:first_name",
+      "@type": "xsd:string"
+    },
+    "lastName": {
+      "@id": "revel:last_name",
+      "@type": "xsd:string"
+    },
+    "email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "event": {
+      "@id": "revel:event",
+      "@type": "xsd:string"
+    },
+    "customer": {
+      "@id": "revel:customer",
+      "@type": "xsd:integer"
+    },
+    "instock": {
+      "@id": "revel:instock",
+      "@type": "xsd:boolean"
+    },
+    "type": {
+      "@id": "revel:type",
+      "@type": "xsd:string"
+    },
+    "barcode": {
+      "@id": "revel:barcode",
+      "@type": "xsd:string"
+    },
+    "employee": {
+      "@id": "revel:employee",
+      "@type": "xsd:integer"
+    },
+    "establishment": {
+      "@id": "revel:establishment",
+      "@type": "xsd:integer"
+    },
+    "action": {
+      "@id": "revel:action",
+      "@type": "xsd:string"
+    }
+  }
+}

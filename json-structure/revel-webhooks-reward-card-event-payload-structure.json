@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-structure/revel-webhooks-reward-card-event-payload-structure.json",
+  "name": "RewardCardEventPayload",
+  "description": "RewardCardEventPayload schema from Revel Webhooks",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int32",
+      "example": 1
+    },
+    "customer": {
+      "type": "int32",
+      "example": 1
+    }
+  }
+}

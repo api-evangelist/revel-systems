@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "IntegrationChangedPayload",
+  "description": "IntegrationChangedPayload schema from Revel Webhooks",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-schema/revel-webhooks-integration-changed-payload-schema.json",
+  "type": "object",
+  "properties": {
+    "event": {
+      "type": "string",
+      "const": "app.integration.changed"
+    }
+  }
+}

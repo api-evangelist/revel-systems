@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CustomerEventPayload",
+  "description": "Customer profile data with addresses, contact information, and loyalty details.",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-schema/revel-webhooks-customer-event-payload-schema.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "example": 1
+    },
+    "first_name": {
+      "type": "string",
+      "example": "Jane"
+    },
+    "last_name": {
+      "type": "string",
+      "example": "Doe"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "example": "customer@example.com"
+    }
+  }
+}

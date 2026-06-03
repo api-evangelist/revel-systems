@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/json-structure/revel-webhooks-integration-changed-payload-structure.json",
+  "name": "IntegrationChangedPayload",
+  "description": "IntegrationChangedPayload schema from Revel Webhooks",
+  "type": "object",
+  "properties": {
+    "event": {
+      "type": "string",
+      "const": "app.integration.changed"
+    }
+  }
+}
