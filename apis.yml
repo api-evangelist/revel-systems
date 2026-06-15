@@ -2,10 +2,11 @@ aid: revel-systems
 url: https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/apis.yml
 name: Revel Systems
 kind: company
-description: Revel Systems is a cloud iPad-based POS for restaurants and retailers. The Revel Open API
-  exposes products, orders, customers, employees, inventory, schedules, and reporting via a REST interface
-  for partner integrations. The API follows Django Tastypie conventions (objects/meta list envelope,
-  field-lookup filtering) and is complemented by an HMAC-signed webhook channel.
+description: >-
+  Revel Systems is a cloud iPad-based POS for restaurants and retailers. The Revel Open API exposes products, orders,
+  customers, employees, inventory, schedules, and reporting via a REST interface for partner integrations. The API
+  follows Django Tastypie conventions (objects/meta list envelope, field-lookup filtering) and is complemented by an
+  HMAC-signed webhook channel.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - POS
@@ -18,112 +19,99 @@ specificationVersion: '0.19'
 apis:
   - aid: revel:open-api
     name: Revel Open API
-    description: REST API for the Revel POS platform. Exposes products, orders, order items, customers,
-      establishments, employees, schedules, inventory, and reports. Authenticated via API key/secret per
-      Revel establishment using the API-AUTHENTICATION header. Built on Django Tastypie conventions.
+    description: >-
+      REST API for the Revel POS platform. Exposes products, orders, order items, customers, establishments, employees,
+      schedules, inventory, and reports. Authenticated via API key/secret per Revel establishment using the
+      API-AUTHENTICATION header. Built on Django Tastypie conventions.
     humanURL: https://developer.revelsystems.com/revelsystems/reference/welcome
     baseURL: https://yoursubdomain.revelup.com/resources
     tags:
-    - REST
-    - POS
+      - REST
+      - POS
     properties:
-    - type: Documentation
-      url: https://developer.revelsystems.com/revelsystems/reference/welcome
-    - type: APIReference
-      url: https://developer.revelsystems.com/revelsystems/reference
-    - type: GettingStarted
-      url: https://developer.revelsystems.com/revelsystems/docs/how-to-make-an-api-call
-    - type: Authentication
-      url: https://developer.revelsystems.com/revelsystems/docs/how-to-make-an-api-call
-    - type: ChangeLog
-      url: https://developer.revelsystems.com/revelsystems/changelog/welcome-to-revelsystems
-    - type: OpenAPI
-      url: openapi/revel-open-api-openapi.yml
-    - type: JSONSchema
-      url: json-schema/revel-open-api-order-schema.json
-      title: Order Schema
-    - type: JSONSchema
-      url: json-schema/revel-open-api-product-schema.json
-      title: Product Schema
-    - type: JSONSchema
-      url: json-schema/revel-open-api-customer-schema.json
-      title: Customer Schema
-    - type: JSONSchema
-      url: json-schema/revel-open-api-establishment-schema.json
-      title: Establishment Schema
-    - type: JSONSchema
-      url: json-schema/revel-open-api-time-schedule-schema.json
-      title: TimeSchedule Schema
-    - type: JSONStructure
-      url: json-structure/revel-open-api-order-structure.json
-      title: Order Structure
-    - type: JSONStructure
-      url: json-structure/revel-open-api-product-structure.json
-      title: Product Structure
-    - type: JSONStructure
-      url: json-structure/revel-open-api-customer-structure.json
-      title: Customer Structure
-    - type: JSON-LD
-      url: json-ld/revel-open-api-context.jsonld
-    - type: Example
-      url: examples/revel-open-api-order-example.json
-      title: Order Example
-    - type: Example
-      url: examples/revel-open-api-product-example.json
-      title: Product Example
-    - type: Example
-      url: examples/revel-open-api-customer-example.json
-      title: Customer Example
-    - type: NaftikoCapability
-      url: capabilities/revel-open-api-orders.yaml
-      title: Orders
-    - type: NaftikoCapability
-      url: capabilities/revel-open-api-products.yaml
-      title: Products
-    - type: NaftikoCapability
-      url: capabilities/revel-open-api-customers.yaml
-      title: Customers
-    - type: NaftikoCapability
-      url: capabilities/revel-open-api-establishments.yaml
-      title: Establishments
-    - type: NaftikoCapability
-      url: capabilities/revel-open-api-scheduling.yaml
-      title: Scheduling
-    - type: Plans
-      url: plans/revel-systems-plans-pricing.yml
-    - type: RateLimits
-      url: rate-limits/revel-systems-rate-limits.yml
-    - type: FinOps
-      url: finops/revel-systems-finops.yml
+      - type: Documentation
+        url: https://developer.revelsystems.com/revelsystems/reference/welcome
+      - type: APIReference
+        url: https://developer.revelsystems.com/revelsystems/reference
+      - type: GettingStarted
+        url: https://developer.revelsystems.com/revelsystems/docs/how-to-make-an-api-call
+      - type: Authentication
+        url: https://developer.revelsystems.com/revelsystems/docs/how-to-make-an-api-call
+      - type: ChangeLog
+        url: https://developer.revelsystems.com/revelsystems/changelog/welcome-to-revelsystems
+      - type: OpenAPI
+        url: openapi/revel-open-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/revel-open-api-order-schema.json
+        title: Order Schema
+      - type: JSONSchema
+        url: json-schema/revel-open-api-product-schema.json
+        title: Product Schema
+      - type: JSONSchema
+        url: json-schema/revel-open-api-customer-schema.json
+        title: Customer Schema
+      - type: JSONSchema
+        url: json-schema/revel-open-api-establishment-schema.json
+        title: Establishment Schema
+      - type: JSONSchema
+        url: json-schema/revel-open-api-time-schedule-schema.json
+        title: TimeSchedule Schema
+      - type: JSONStructure
+        url: json-structure/revel-open-api-order-structure.json
+        title: Order Structure
+      - type: JSONStructure
+        url: json-structure/revel-open-api-product-structure.json
+        title: Product Structure
+      - type: JSONStructure
+        url: json-structure/revel-open-api-customer-structure.json
+        title: Customer Structure
+      - type: JSON-LD
+        url: json-ld/revel-open-api-context.jsonld
+      - type: Example
+        url: examples/revel-open-api-order-example.json
+        title: Order Example
+      - type: Example
+        url: examples/revel-open-api-product-example.json
+        title: Product Example
+      - type: Example
+        url: examples/revel-open-api-customer-example.json
+        title: Customer Example
+      - type: Plans
+        url: plans/revel-systems-plans-pricing.yml
+      - type: RateLimits
+        url: rate-limits/revel-systems-rate-limits.yml
+      - type: FinOps
+        url: finops/revel-systems-finops.yml
   - aid: revel:webhooks
     name: Revel Webhooks
-    description: Event-driven webhook channel that delivers POS events (order finalized, customer created/updated,
-      stock changes, menu updates, timesheet changes, integration changes, reward cards, and ping) to partner
-      HTTPS endpoints via POST. Payloads are signed with an HMAC-SHA1 X-Revel-Signature header.
+    description: >-
+      Event-driven webhook channel that delivers POS events (order finalized, customer created/updated, stock changes,
+      menu updates, timesheet changes, integration changes, reward cards, and ping) to partner HTTPS endpoints via POST.
+      Payloads are signed with an HMAC-SHA1 X-Revel-Signature header.
     humanURL: https://developer.revelsystems.com/revelsystems/docs/webhooks
     tags:
-    - Webhooks
-    - Events
-    - POS
+      - Webhooks
+      - Events
+      - POS
     properties:
-    - type: Documentation
-      url: https://developer.revelsystems.com/revelsystems/docs/webhooks
-    - type: AsyncAPI
-      url: asyncapi/revel-webhooks-asyncapi.yml
-    - type: JSONSchema
-      url: json-schema/revel-webhooks-order-finalized-payload-schema.json
-      title: Order Finalized Payload
-    - type: JSONSchema
-      url: json-schema/revel-webhooks-customer-event-payload-schema.json
-      title: Customer Event Payload
-    - type: JSONSchema
-      url: json-schema/revel-webhooks-stock-status-payload-schema.json
-      title: Stock Status Payload
-    - type: JSON-LD
-      url: json-ld/revel-webhooks-context.jsonld
-    - type: Example
-      url: examples/revel-webhooks-order-finalized-payload-example.json
-      title: Order Finalized Example
+      - type: Documentation
+        url: https://developer.revelsystems.com/revelsystems/docs/webhooks
+      - type: AsyncAPI
+        url: asyncapi/revel-webhooks-asyncapi.yml
+      - type: JSONSchema
+        url: json-schema/revel-webhooks-order-finalized-payload-schema.json
+        title: Order Finalized Payload
+      - type: JSONSchema
+        url: json-schema/revel-webhooks-customer-event-payload-schema.json
+        title: Customer Event Payload
+      - type: JSONSchema
+        url: json-schema/revel-webhooks-stock-status-payload-schema.json
+        title: Stock Status Payload
+      - type: JSON-LD
+        url: json-ld/revel-webhooks-context.jsonld
+      - type: Example
+        url: examples/revel-webhooks-order-finalized-payload-example.json
+        title: Order Finalized Example
 common:
   - type: GitHubOrganization
     url: https://github.com/RevelSystems
@@ -147,36 +135,42 @@ common:
     url: finops/revel-systems-finops.yml
   - type: Features
     data:
-    - name: Tastypie REST Conventions
-      description: List endpoints return an objects array with a meta pagination envelope (total_count, limit, offset, next, previous).
-    - name: Field-Lookup Filtering
-      description: Filter resources with Django-style lookups (e.g. id__lt, created_date__range, name__icontains).
-    - name: Field Selection and Expansion
-      description: Use the fields parameter to limit returned attributes and expand to inline one level of foreign-key relationships.
-    - name: Batch Retrieval
-      description: Retrieve multiple records by ID in a single call using the set/id1;id2;id3 path form.
-    - name: Signed Webhooks
-      description: Real-time event delivery secured with HMAC-SHA1 signatures and per-event-type endpoint registration.
+      - name: Tastypie REST Conventions
+        description: >-
+          List endpoints return an objects array with a meta pagination envelope (total_count, limit, offset, next,
+          previous).
+      - name: Field-Lookup Filtering
+        description: Filter resources with Django-style lookups (e.g. id__lt, created_date__range, name__icontains).
+      - name: Field Selection and Expansion
+        description: >-
+          Use the fields parameter to limit returned attributes and expand to inline one level of foreign-key
+          relationships.
+      - name: Batch Retrieval
+        description: Retrieve multiple records by ID in a single call using the set/id1;id2;id3 path form.
+      - name: Signed Webhooks
+        description: Real-time event delivery secured with HMAC-SHA1 signatures and per-event-type endpoint registration.
   - type: UseCases
     data:
-    - name: Order Synchronization
-      description: Sync finalized orders into accounting, ERP, or analytics systems via the Order resource and order.finalized webhook.
-    - name: Catalog Management
-      description: Create and maintain products, modifiers, and combo sets across establishments.
-    - name: Customer and Loyalty
-      description: Sync customer profiles and loyalty/reward data with marketing and CRM platforms.
-    - name: Labor and Scheduling
-      description: Read and write employee shifts and timesheets via TimeSchedule, TimeScheduleRule, and TimeSheetEntry.
-    - name: Inventory Monitoring
-      description: React to stock-status changes in real time via the inout.stock webhook.
+      - name: Order Synchronization
+        description: >-
+          Sync finalized orders into accounting, ERP, or analytics systems via the Order resource and order.finalized
+          webhook.
+      - name: Catalog Management
+        description: Create and maintain products, modifiers, and combo sets across establishments.
+      - name: Customer and Loyalty
+        description: Sync customer profiles and loyalty/reward data with marketing and CRM platforms.
+      - name: Labor and Scheduling
+        description: Read and write employee shifts and timesheets via TimeSchedule, TimeScheduleRule, and TimeSheetEntry.
+      - name: Inventory Monitoring
+        description: React to stock-status changes in real time via the inout.stock webhook.
   - type: Integrations
     data:
-    - name: Accounting and ERP
-      description: Push order and sales data into accounting and ERP systems.
-    - name: Payments
-      description: Establishment-level payment configuration including ACH for US establishments.
-    - name: Marketing and CRM
-      description: Sync customer and loyalty data with marketing platforms.
+      - name: Accounting and ERP
+        description: Push order and sales data into accounting and ERP systems.
+      - name: Payments
+        description: Establishment-level payment configuration including ACH for US establishments.
+      - name: Marketing and CRM
+        description: Sync customer and loyalty data with marketing platforms.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
