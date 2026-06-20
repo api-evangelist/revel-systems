@@ -7,7 +7,7 @@ description: >-
   customers, employees, inventory, schedules, and reporting via a REST interface for partner integrations. The API
   follows Django Tastypie conventions (objects/meta list envelope, field-lookup filtering) and is complemented by an
   HMAC-signed webhook channel.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - POS
   - Restaurant
