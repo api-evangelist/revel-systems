@@ -65,15 +65,15 @@ apis:
       - type: JSONStructure
         url: json-structure/revel-open-api-customer-structure.json
         title: Customer Structure
-      - type: JSON-LD
+      - type: JSONLD
         url: json-ld/revel-open-api-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/revel-open-api-order-example.json
         title: Order Example
-      - type: Example
+      - type: Examples
         url: examples/revel-open-api-product-example.json
         title: Product Example
-      - type: Example
+      - type: Examples
         url: examples/revel-open-api-customer-example.json
         title: Customer Example
       - type: Plans
@@ -107,9 +107,9 @@ apis:
       - type: JSONSchema
         url: json-schema/revel-webhooks-stock-status-payload-schema.json
         title: Stock Status Payload
-      - type: JSON-LD
+      - type: JSONLD
         url: json-ld/revel-webhooks-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/revel-webhooks-order-finalized-payload-example.json
         title: Order Finalized Example
 common:
