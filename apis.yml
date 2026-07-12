@@ -113,6 +113,10 @@ apis:
         url: examples/revel-webhooks-order-finalized-payload-example.json
         title: Order Finalized Example
 common:
+  - type: DomainSecurity
+    url: security/revel-systems-domain-security.yml
+  - type: Authentication
+    url: authentication/revel-systems-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/RevelSystems
   - type: LinkedIn

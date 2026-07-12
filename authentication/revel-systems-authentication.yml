@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/revel-open-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiAuthentication
+  type: apiKey
+  in: header
+  parameter: API-AUTHENTICATION
+  description: 'API key and secret joined by a colon, e.g. `API-AUTHENTICATION: key:secret`.
+    The key and secret may alternatively be passed as `api_key` and `api_secret` query parameters.'
+  sources:
+  - openapi/revel-open-api-openapi.yml
