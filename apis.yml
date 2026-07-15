@@ -113,6 +113,8 @@ apis:
         url: examples/revel-webhooks-order-finalized-payload-example.json
         title: Order Finalized Example
 common:
+  - type: AgenticAccess
+    url: agentic-access/revel-systems-agentic-access.yml
   - type: DomainSecurity
     url: security/revel-systems-domain-security.yml
   - type: Authentication
