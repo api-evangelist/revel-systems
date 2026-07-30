@@ -7,7 +7,20 @@ description: >-
   customers, employees, inventory, schedules, and reporting via a REST interface for partner integrations. The API
   follows Django Tastypie conventions (objects/meta list envelope, field-lookup filtering) and is complemented by an
   HMAC-signed webhook channel.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/revel-systems.png
 tags:
   - POS
   - Restaurant
@@ -17,101 +30,286 @@ created: '2026-05-08'
 modified: '2026-06-03'
 specificationVersion: '0.19'
 apis:
-  - aid: revel:open-api
-    name: Revel Open API
-    description: >-
-      REST API for the Revel POS platform. Exposes products, orders, order items, customers, establishments, employees,
-      schedules, inventory, and reports. Authenticated via API key/secret per Revel establishment using the
-      API-AUTHENTICATION header. Built on Django Tastypie conventions.
-    humanURL: https://developer.revelsystems.com/revelsystems/reference/welcome
-    baseURL: https://yoursubdomain.revelup.com/resources
-    tags:
-      - REST
-      - POS
-    properties:
-      - type: Documentation
-        url: https://developer.revelsystems.com/revelsystems/reference/welcome
-      - type: APIReference
-        url: https://developer.revelsystems.com/revelsystems/reference
-      - type: GettingStarted
-        url: https://developer.revelsystems.com/revelsystems/docs/how-to-make-an-api-call
-      - type: Authentication
-        url: https://developer.revelsystems.com/revelsystems/docs/how-to-make-an-api-call
-      - type: ChangeLog
-        url: https://developer.revelsystems.com/revelsystems/changelog/welcome-to-revelsystems
-      - type: OpenAPI
-        url: openapi/revel-open-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/revel-open-api-order-schema.json
-        title: Order Schema
-      - type: JSONSchema
-        url: json-schema/revel-open-api-product-schema.json
-        title: Product Schema
-      - type: JSONSchema
-        url: json-schema/revel-open-api-customer-schema.json
-        title: Customer Schema
-      - type: JSONSchema
-        url: json-schema/revel-open-api-establishment-schema.json
-        title: Establishment Schema
-      - type: JSONSchema
-        url: json-schema/revel-open-api-time-schedule-schema.json
-        title: TimeSchedule Schema
-      - type: JSONStructure
-        url: json-structure/revel-open-api-order-structure.json
-        title: Order Structure
-      - type: JSONStructure
-        url: json-structure/revel-open-api-product-structure.json
-        title: Product Structure
-      - type: JSONStructure
-        url: json-structure/revel-open-api-customer-structure.json
-        title: Customer Structure
-      - type: JSONLD
-        url: json-ld/revel-open-api-context.jsonld
-      - type: Examples
-        url: examples/revel-open-api-order-example.json
-        title: Order Example
-      - type: Examples
-        url: examples/revel-open-api-product-example.json
-        title: Product Example
-      - type: Examples
-        url: examples/revel-open-api-customer-example.json
-        title: Customer Example
-      - type: Plans
-        url: plans/revel-systems-plans-pricing.yml
-      - type: RateLimits
-        url: rate-limits/revel-systems-rate-limits.yml
-      - type: FinOps
-        url: finops/revel-systems-finops.yml
-  - aid: revel:webhooks
-    name: Revel Webhooks
-    description: >-
-      Event-driven webhook channel that delivers POS events (order finalized, customer created/updated, stock changes,
-      menu updates, timesheet changes, integration changes, reward cards, and ping) to partner HTTPS endpoints via POST.
-      Payloads are signed with an HMAC-SHA1 X-Revel-Signature header.
-    humanURL: https://developer.revelsystems.com/revelsystems/docs/webhooks
-    tags:
-      - Webhooks
-      - Events
-      - POS
-    properties:
-      - type: Documentation
-        url: https://developer.revelsystems.com/revelsystems/docs/webhooks
-      - type: AsyncAPI
-        url: asyncapi/revel-webhooks-asyncapi.yml
-      - type: JSONSchema
-        url: json-schema/revel-webhooks-order-finalized-payload-schema.json
-        title: Order Finalized Payload
-      - type: JSONSchema
-        url: json-schema/revel-webhooks-customer-event-payload-schema.json
-        title: Customer Event Payload
-      - type: JSONSchema
-        url: json-schema/revel-webhooks-stock-status-payload-schema.json
-        title: Stock Status Payload
-      - type: JSONLD
-        url: json-ld/revel-webhooks-context.jsonld
-      - type: Examples
-        url: examples/revel-webhooks-order-finalized-payload-example.json
-        title: Order Finalized Example
+- aid: revel:webhooks
+  name: Revel Webhooks
+  description: >-
+    Event-driven webhook channel that delivers POS events (order finalized, customer created/updated,
+    stock changes, menu updates, timesheet changes, integration changes, reward cards, and ping) to partner
+    HTTPS endpoints via POST. Payloads are signed with an HMAC-SHA1 X-Revel-Signature header.
+  humanURL: https://developer.revelsystems.com/revelsystems/docs/webhooks
+  tags:
+  - Webhooks
+  - Events
+  - POS
+  properties:
+  - type: Documentation
+    url: https://developer.revelsystems.com/revelsystems/docs/webhooks
+  - type: AsyncAPI
+    url: asyncapi/revel-webhooks-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/revel-webhooks-order-finalized-payload-schema.json
+    title: Order Finalized Payload
+  - type: JSONSchema
+    url: json-schema/revel-webhooks-customer-event-payload-schema.json
+    title: Customer Event Payload
+  - type: JSONSchema
+    url: json-schema/revel-webhooks-stock-status-payload-schema.json
+    title: Stock Status Payload
+  - type: JSONLD
+    url: json-ld/revel-webhooks-context.jsonld
+  - type: Examples
+    url: examples/revel-webhooks-order-finalized-payload-example.json
+    title: Order Finalized Example
+- aid: revel-systems:revel-systems-customers-api
+  name: Revel Systems Customers API
+  description: Customer records and addresses.
+  humanURL: https://developer.revelsystems.com/revelsystems/reference/welcome
+  baseURL: https://yoursubdomain.revelup.com/resources
+  tags:
+  - Customers
+  properties:
+  - type: OpenAPI
+    url: openapi/revel-systems-customers-api-openapi.yml
+  - type: Documentation
+    url: https://developer.revelsystems.com/revelsystems/reference/welcome
+  - type: APIReference
+    url: https://developer.revelsystems.com/revelsystems/reference
+  - type: GettingStarted
+    url: https://developer.revelsystems.com/revelsystems/docs/how-to-make-an-api-call
+  - type: Authentication
+    url: https://developer.revelsystems.com/revelsystems/docs/how-to-make-an-api-call
+  - type: ChangeLog
+    url: https://developer.revelsystems.com/revelsystems/changelog/welcome-to-revelsystems
+  - type: JSONSchema
+    url: json-schema/revel-open-api-order-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-product-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-customer-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-establishment-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-time-schedule-schema.json
+  - type: JSONStructure
+    url: json-structure/revel-open-api-order-structure.json
+  - type: JSONStructure
+    url: json-structure/revel-open-api-product-structure.json
+  - type: JSONStructure
+    url: json-structure/revel-open-api-customer-structure.json
+  - type: JSONLD
+    url: json-ld/revel-open-api-context.jsonld
+  - type: Examples
+    url: examples/revel-open-api-order-example.json
+  - type: Examples
+    url: examples/revel-open-api-product-example.json
+  - type: Examples
+    url: examples/revel-open-api-customer-example.json
+  - type: Plans
+    url: plans/revel-systems-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/revel-systems-rate-limits.yml
+  - type: FinOps
+    url: finops/revel-systems-finops.yml
+- aid: revel-systems:revel-systems-establishments-api
+  name: Revel Systems Establishments API
+  description: Establishment (location) resources.
+  humanURL: https://developer.revelsystems.com/revelsystems/reference/welcome
+  baseURL: https://yoursubdomain.revelup.com/resources
+  tags:
+  - Establishments
+  properties:
+  - type: OpenAPI
+    url: openapi/revel-systems-establishments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.revelsystems.com/revelsystems/reference/welcome
+  - type: APIReference
+    url: https://developer.revelsystems.com/revelsystems/reference
+  - type: GettingStarted
+    url: https://developer.revelsystems.com/revelsystems/docs/how-to-make-an-api-call
+  - type: Authentication
+    url: https://developer.revelsystems.com/revelsystems/docs/how-to-make-an-api-call
+  - type: ChangeLog
+    url: https://developer.revelsystems.com/revelsystems/changelog/welcome-to-revelsystems
+  - type: JSONSchema
+    url: json-schema/revel-open-api-order-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-product-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-customer-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-establishment-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-time-schedule-schema.json
+  - type: JSONStructure
+    url: json-structure/revel-open-api-order-structure.json
+  - type: JSONStructure
+    url: json-structure/revel-open-api-product-structure.json
+  - type: JSONStructure
+    url: json-structure/revel-open-api-customer-structure.json
+  - type: JSONLD
+    url: json-ld/revel-open-api-context.jsonld
+  - type: Examples
+    url: examples/revel-open-api-order-example.json
+  - type: Examples
+    url: examples/revel-open-api-product-example.json
+  - type: Examples
+    url: examples/revel-open-api-customer-example.json
+  - type: Plans
+    url: plans/revel-systems-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/revel-systems-rate-limits.yml
+  - type: FinOps
+    url: finops/revel-systems-finops.yml
+- aid: revel-systems:revel-systems-orders-api
+  name: Revel Systems Orders API
+  description: Order and order-item resources.
+  humanURL: https://developer.revelsystems.com/revelsystems/reference/welcome
+  baseURL: https://yoursubdomain.revelup.com/resources
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/revel-systems-orders-api-openapi.yml
+  - type: Documentation
+    url: https://developer.revelsystems.com/revelsystems/reference/welcome
+  - type: APIReference
+    url: https://developer.revelsystems.com/revelsystems/reference
+  - type: GettingStarted
+    url: https://developer.revelsystems.com/revelsystems/docs/how-to-make-an-api-call
+  - type: Authentication
+    url: https://developer.revelsystems.com/revelsystems/docs/how-to-make-an-api-call
+  - type: ChangeLog
+    url: https://developer.revelsystems.com/revelsystems/changelog/welcome-to-revelsystems
+  - type: JSONSchema
+    url: json-schema/revel-open-api-order-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-product-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-customer-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-establishment-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-time-schedule-schema.json
+  - type: JSONStructure
+    url: json-structure/revel-open-api-order-structure.json
+  - type: JSONStructure
+    url: json-structure/revel-open-api-product-structure.json
+  - type: JSONStructure
+    url: json-structure/revel-open-api-customer-structure.json
+  - type: JSONLD
+    url: json-ld/revel-open-api-context.jsonld
+  - type: Examples
+    url: examples/revel-open-api-order-example.json
+  - type: Examples
+    url: examples/revel-open-api-product-example.json
+  - type: Examples
+    url: examples/revel-open-api-customer-example.json
+  - type: Plans
+    url: plans/revel-systems-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/revel-systems-rate-limits.yml
+  - type: FinOps
+    url: finops/revel-systems-finops.yml
+- aid: revel-systems:revel-systems-products-api
+  name: Revel Systems Products API
+  description: Product catalog and modifier resources.
+  humanURL: https://developer.revelsystems.com/revelsystems/reference/welcome
+  baseURL: https://yoursubdomain.revelup.com/resources
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/revel-systems-products-api-openapi.yml
+  - type: Documentation
+    url: https://developer.revelsystems.com/revelsystems/reference/welcome
+  - type: APIReference
+    url: https://developer.revelsystems.com/revelsystems/reference
+  - type: GettingStarted
+    url: https://developer.revelsystems.com/revelsystems/docs/how-to-make-an-api-call
+  - type: Authentication
+    url: https://developer.revelsystems.com/revelsystems/docs/how-to-make-an-api-call
+  - type: ChangeLog
+    url: https://developer.revelsystems.com/revelsystems/changelog/welcome-to-revelsystems
+  - type: JSONSchema
+    url: json-schema/revel-open-api-order-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-product-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-customer-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-establishment-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-time-schedule-schema.json
+  - type: JSONStructure
+    url: json-structure/revel-open-api-order-structure.json
+  - type: JSONStructure
+    url: json-structure/revel-open-api-product-structure.json
+  - type: JSONStructure
+    url: json-structure/revel-open-api-customer-structure.json
+  - type: JSONLD
+    url: json-ld/revel-open-api-context.jsonld
+  - type: Examples
+    url: examples/revel-open-api-order-example.json
+  - type: Examples
+    url: examples/revel-open-api-product-example.json
+  - type: Examples
+    url: examples/revel-open-api-customer-example.json
+  - type: Plans
+    url: plans/revel-systems-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/revel-systems-rate-limits.yml
+  - type: FinOps
+    url: finops/revel-systems-finops.yml
+- aid: revel-systems:revel-systems-scheduling-api
+  name: Revel Systems Scheduling API
+  description: Labor scheduling and timesheet resources.
+  humanURL: https://developer.revelsystems.com/revelsystems/reference/welcome
+  baseURL: https://yoursubdomain.revelup.com/resources
+  tags:
+  - Scheduling
+  properties:
+  - type: OpenAPI
+    url: openapi/revel-systems-scheduling-api-openapi.yml
+  - type: Documentation
+    url: https://developer.revelsystems.com/revelsystems/reference/welcome
+  - type: APIReference
+    url: https://developer.revelsystems.com/revelsystems/reference
+  - type: GettingStarted
+    url: https://developer.revelsystems.com/revelsystems/docs/how-to-make-an-api-call
+  - type: Authentication
+    url: https://developer.revelsystems.com/revelsystems/docs/how-to-make-an-api-call
+  - type: ChangeLog
+    url: https://developer.revelsystems.com/revelsystems/changelog/welcome-to-revelsystems
+  - type: JSONSchema
+    url: json-schema/revel-open-api-order-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-product-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-customer-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-establishment-schema.json
+  - type: JSONSchema
+    url: json-schema/revel-open-api-time-schedule-schema.json
+  - type: JSONStructure
+    url: json-structure/revel-open-api-order-structure.json
+  - type: JSONStructure
+    url: json-structure/revel-open-api-product-structure.json
+  - type: JSONStructure
+    url: json-structure/revel-open-api-customer-structure.json
+  - type: JSONLD
+    url: json-ld/revel-open-api-context.jsonld
+  - type: Examples
+    url: examples/revel-open-api-order-example.json
+  - type: Examples
+    url: examples/revel-open-api-product-example.json
+  - type: Examples
+    url: examples/revel-open-api-customer-example.json
+  - type: Plans
+    url: plans/revel-systems-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/revel-systems-rate-limits.yml
+  - type: FinOps
+    url: finops/revel-systems-finops.yml
 common:
   - type: AgenticAccess
     url: agentic-access/revel-systems-agentic-access.yml
