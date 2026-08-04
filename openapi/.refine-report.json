@@ -1,0 +1,22 @@
+{
+  "provider": "revel-systems",
+  "sources": [
+    "revel-systems-customers-api-openapi.yml",
+    "revel-systems-establishments-api-openapi.yml",
+    "revel-systems-orders-api-openapi.yml",
+    "revel-systems-products-api-openapi.yml",
+    "revel-systems-scheduling-api-openapi.yml"
+  ],
+  "outputs": [
+    "revel-systems-customers-api-openapi.yml",
+    "revel-systems-establishments-api-openapi.yml",
+    "revel-systems-orders-api-openapi.yml",
+    "revel-systems-products-api-openapi.yml",
+    "revel-systems-scheduling-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
