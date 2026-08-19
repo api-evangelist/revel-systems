@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Revel Open Customers Establishments API",
+    "version": "2025.3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "API-AUTHENTICATION",
+      "value": "{{API-AUTHENTICATION}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Establishments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Establishments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.revelup.com/resources/Establishment/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of objects to return per page. Use `0` to disable pagination."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first object to return."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of direct resource attributes to return (e.g. `id,name,price`)."
+              }
+            ]
+          },
+          "docs": "Returns the list of Establishment (location) objects."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

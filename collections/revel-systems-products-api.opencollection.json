@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Revel Open Customers Products API",
+    "version": "2025.3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "API-AUTHENTICATION",
+      "value": "{{API-AUTHENTICATION}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.revelup.com/resources/Product/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of objects to return per page. Use `0` to disable pagination."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first object to return."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of direct resource attributes to return (e.g. `id,name,price`)."
+              },
+              {
+                "name": "order_by",
+                "value": "sorting",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "Cappuccino",
+                "type": "query"
+              },
+              {
+                "name": "barcode",
+                "value": "123456789012",
+                "type": "query"
+              },
+              {
+                "name": "sku",
+                "value": "CAP-001",
+                "type": "query"
+              },
+              {
+                "name": "category",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "active",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "establishment",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "display_online",
+                "value": "true",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the list of Product objects. Supports Tastypie field-lookup filtering, field selection, ordering, and offset pagination."
+        },
+        {
+          "info": {
+            "name": "Create Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{subdomain}.revelup.com/resources/Product/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Product object."
+        },
+        {
+          "info": {
+            "name": "Get Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.revelup.com/resources/Product/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Numeric resource identifier."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of direct resource attributes to return (e.g. `id,name,price`)."
+              }
+            ]
+          },
+          "docs": "Returns a single Product object by its numeric id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,166 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Revel Open Customers Orders API",
+    "version": "2025.3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "API-AUTHENTICATION",
+      "value": "{{API-AUTHENTICATION}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.revelup.com/resources/Order/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of objects to return per page. Use `0` to disable pagination."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first object to return."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of direct resource attributes to return (e.g. `id,name,price`)."
+              },
+              {
+                "name": "order_by",
+                "value": "updated_date",
+                "type": "query",
+                "description": "Field to sort by. Prefix with `-` for descending."
+              },
+              {
+                "name": "id",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "uuid",
+                "value": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+                "type": "query"
+              },
+              {
+                "name": "establishment",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "customer",
+                "value": "1",
+                "type": "query"
+              },
+              {
+                "name": "closed",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "web_order",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "created_date",
+                "value": "2026-06-01T12:00:00Z",
+                "type": "query"
+              },
+              {
+                "name": "updated_date",
+                "value": "2026-06-01T12:00:00Z",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the list of Order objects. Supports Tastypie field-lookup filtering, field selection, ordering, and offset pagination."
+        },
+        {
+          "info": {
+            "name": "Create Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{subdomain}.revelup.com/resources/Order/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Order object."
+        },
+        {
+          "info": {
+            "name": "Get Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.revelup.com/resources/Order/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Numeric resource identifier."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of direct resource attributes to return (e.g. `id,name,price`)."
+              }
+            ]
+          },
+          "docs": "Returns a single Order object by its numeric id."
+        },
+        {
+          "info": {
+            "name": "Update Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{subdomain}.revelup.com/resources/Order/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Numeric resource identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partially updates an existing Order object."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

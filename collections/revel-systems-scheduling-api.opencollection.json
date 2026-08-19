@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Revel Open Customers Scheduling API",
+    "version": "2025.3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "API-AUTHENTICATION",
+      "value": "{{API-AUTHENTICATION}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scheduling",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Time Schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.revelup.com/resources/TimeSchedule/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of objects to return per page. Use `0` to disable pagination."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first object to return."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of direct resource attributes to return (e.g. `id,name,price`)."
+              },
+              {
+                "name": "establishment",
+                "value": "1",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the list of TimeSchedule objects representing scheduled employee shifts within an establishment."
+        },
+        {
+          "info": {
+            "name": "Create Time Schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{subdomain}.revelup.com/resources/TimeSchedule/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new TimeSchedule (employee shift) object."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

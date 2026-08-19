@@ -1,0 +1,1182 @@
+{
+  "item": [
+    {
+      "id": "da537d39-c3ef-41b3-b8ac-596ea0044b09",
+      "name": "Orders",
+      "description": {
+        "content": "Order and order-item resources.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2bad730b-afdb-4210-b612-7aa19d20a786",
+          "name": "Get Orders",
+          "request": {
+            "name": "Get Orders",
+            "description": {
+              "content": "Returns the list of Order objects. Supports Tastypie field-lookup filtering, field selection, ordering, and offset pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Order",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Maximum number of objects to return per page. Use `0` to disable pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Zero-based offset of the first object to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>,<string>",
+                  "description": "Comma-separated list of direct resource attributes to return (e.g. `id,name,price`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "Field to sort by. Prefix with `-` for descending."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "uuid",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "establishment",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "customer",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "closed",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "web_order",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_date",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_date",
+                  "value": "<dateTime>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The customer's Revel subdomain",
+                  "type": "any",
+                  "value": "{{subdomain}}",
+                  "key": "subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d166403d-ffa4-4850-988c-28b66231555a",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Order",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "updated_date"
+                    },
+                    {
+                      "key": "id",
+                      "value": "1"
+                    },
+                    {
+                      "key": "uuid",
+                      "value": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
+                    },
+                    {
+                      "key": "establishment",
+                      "value": "1"
+                    },
+                    {
+                      "key": "customer",
+                      "value": "1"
+                    },
+                    {
+                      "key": "closed",
+                      "value": "true"
+                    },
+                    {
+                      "key": "web_order",
+                      "value": "true"
+                    },
+                    {
+                      "key": "created_date",
+                      "value": "2026-06-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_date",
+                      "value": "2026-06-01T12:00:00Z"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The customer's Revel subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "API-AUTHENTICATION",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"total_count\": 42,\n    \"limit\": 42,\n    \"offset\": 42,\n    \"next\": \"example\",\n    \"previous\": \"example\"\n  },\n  \"objects\": [\n    {\n      \"id\": 1,\n      \"uuid\": \"a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d\",\n      \"establishment\": 1,\n      \"customer\": 1,\n      \"created_by\": 1,\n      \"call_number\": 42,\n      \"call_name\": \"Window\",\n      \"running_tax_number\": 42,\n      \"web_order\": true,\n      \"is_invoice\": true,\n      \"closed\": true,\n      \"printed\": true,\n      \"has_items\": true,\n      \"has_history\": true,\n      \"dining_option\": 42,\n      \"delivery_employee\": 42,\n      \"device_id\": 1,\n      \"local_id\": \"LOC-1\",\n      \"pickup_time\": \"2026-06-01T12:00:00Z\",\n      \"created_date\": \"2026-06-01T12:00:00Z\",\n      \"updated_date\": \"2026-06-01T12:00:00Z\",\n      \"resource_uri\": \"/resources/Resource/1/\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e028121e-90b0-45ba-a0ac-7b868ad33d88",
+              "name": "Authentication failed or was not provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Order",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "updated_date"
+                    },
+                    {
+                      "key": "id",
+                      "value": "1"
+                    },
+                    {
+                      "key": "uuid",
+                      "value": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
+                    },
+                    {
+                      "key": "establishment",
+                      "value": "1"
+                    },
+                    {
+                      "key": "customer",
+                      "value": "1"
+                    },
+                    {
+                      "key": "closed",
+                      "value": "true"
+                    },
+                    {
+                      "key": "web_order",
+                      "value": "true"
+                    },
+                    {
+                      "key": "created_date",
+                      "value": "2026-06-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_date",
+                      "value": "2026-06-01T12:00:00Z"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The customer's Revel subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "API-AUTHENTICATION",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "10d6e353-966d-4d45-ad29-d146004f986f",
+              "name": "Too many requests. Honor the Retry-After header and back off.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Order",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "updated_date"
+                    },
+                    {
+                      "key": "id",
+                      "value": "1"
+                    },
+                    {
+                      "key": "uuid",
+                      "value": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
+                    },
+                    {
+                      "key": "establishment",
+                      "value": "1"
+                    },
+                    {
+                      "key": "customer",
+                      "value": "1"
+                    },
+                    {
+                      "key": "closed",
+                      "value": "true"
+                    },
+                    {
+                      "key": "web_order",
+                      "value": "true"
+                    },
+                    {
+                      "key": "created_date",
+                      "value": "2026-06-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_date",
+                      "value": "2026-06-01T12:00:00Z"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The customer's Revel subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "API-AUTHENTICATION",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd408abc-cc64-45c3-b0c2-b2324c591a6b",
+          "name": "Create Order",
+          "request": {
+            "name": "Create Order",
+            "description": {
+              "content": "Creates a new Order object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Order",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The customer's Revel subdomain",
+                  "type": "any",
+                  "value": "{{subdomain}}",
+                  "key": "subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"uuid\": \"<uuid>\",\n  \"establishment\": \"<integer>\",\n  \"customer\": \"<integer>\",\n  \"created_by\": \"<integer>\",\n  \"call_number\": \"<integer>\",\n  \"call_name\": \"<string>\",\n  \"running_tax_number\": \"<integer>\",\n  \"web_order\": \"<boolean>\",\n  \"is_invoice\": \"<boolean>\",\n  \"closed\": \"<boolean>\",\n  \"printed\": \"<boolean>\",\n  \"has_items\": \"<boolean>\",\n  \"has_history\": \"<boolean>\",\n  \"dining_option\": \"<integer>\",\n  \"delivery_employee\": \"<integer>\",\n  \"device_id\": \"<integer>\",\n  \"local_id\": \"<string>\",\n  \"pickup_time\": \"<dateTime>\",\n  \"created_date\": \"<dateTime>\",\n  \"updated_date\": \"<dateTime>\",\n  \"resource_uri\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1c084fc6-1cf3-4d76-93a5-90dcddf17263",
+              "name": "Order created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Order",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The customer's Revel subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "API-AUTHENTICATION",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"uuid\": \"a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d\",\n  \"establishment\": 1,\n  \"customer\": 1,\n  \"created_by\": 1,\n  \"call_number\": 42,\n  \"call_name\": \"Window\",\n  \"running_tax_number\": 42,\n  \"web_order\": true,\n  \"is_invoice\": true,\n  \"closed\": true,\n  \"printed\": true,\n  \"has_items\": true,\n  \"has_history\": true,\n  \"dining_option\": 42,\n  \"delivery_employee\": 42,\n  \"device_id\": 1,\n  \"local_id\": \"LOC-1\",\n  \"pickup_time\": \"2026-06-01T12:00:00Z\",\n  \"created_date\": \"2026-06-01T12:00:00Z\",\n  \"updated_date\": \"2026-06-01T12:00:00Z\",\n  \"resource_uri\": \"/resources/Resource/1/\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"uuid\": \"a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d\",\n  \"establishment\": 1,\n  \"customer\": 1,\n  \"created_by\": 1,\n  \"call_number\": 42,\n  \"call_name\": \"Window\",\n  \"running_tax_number\": 42,\n  \"web_order\": true,\n  \"is_invoice\": true,\n  \"closed\": true,\n  \"printed\": true,\n  \"has_items\": true,\n  \"has_history\": true,\n  \"dining_option\": 42,\n  \"delivery_employee\": 42,\n  \"device_id\": 1,\n  \"local_id\": \"LOC-1\",\n  \"pickup_time\": \"2026-06-01T12:00:00Z\",\n  \"created_date\": \"2026-06-01T12:00:00Z\",\n  \"updated_date\": \"2026-06-01T12:00:00Z\",\n  \"resource_uri\": \"/resources/Resource/1/\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb9d6c84-5696-451c-b5e0-4212dee2ef2f",
+              "name": "Authentication failed or was not provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Order",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The customer's Revel subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "API-AUTHENTICATION",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"uuid\": \"a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d\",\n  \"establishment\": 1,\n  \"customer\": 1,\n  \"created_by\": 1,\n  \"call_number\": 42,\n  \"call_name\": \"Window\",\n  \"running_tax_number\": 42,\n  \"web_order\": true,\n  \"is_invoice\": true,\n  \"closed\": true,\n  \"printed\": true,\n  \"has_items\": true,\n  \"has_history\": true,\n  \"dining_option\": 42,\n  \"delivery_employee\": 42,\n  \"device_id\": 1,\n  \"local_id\": \"LOC-1\",\n  \"pickup_time\": \"2026-06-01T12:00:00Z\",\n  \"created_date\": \"2026-06-01T12:00:00Z\",\n  \"updated_date\": \"2026-06-01T12:00:00Z\",\n  \"resource_uri\": \"/resources/Resource/1/\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5b8b3436-4051-4a4e-ac7a-f790062775c9",
+              "name": "Too many requests. Honor the Retry-After header and back off.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Order",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The customer's Revel subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "API-AUTHENTICATION",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"uuid\": \"a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d\",\n  \"establishment\": 1,\n  \"customer\": 1,\n  \"created_by\": 1,\n  \"call_number\": 42,\n  \"call_name\": \"Window\",\n  \"running_tax_number\": 42,\n  \"web_order\": true,\n  \"is_invoice\": true,\n  \"closed\": true,\n  \"printed\": true,\n  \"has_items\": true,\n  \"has_history\": true,\n  \"dining_option\": 42,\n  \"delivery_employee\": 42,\n  \"device_id\": 1,\n  \"local_id\": \"LOC-1\",\n  \"pickup_time\": \"2026-06-01T12:00:00Z\",\n  \"created_date\": \"2026-06-01T12:00:00Z\",\n  \"updated_date\": \"2026-06-01T12:00:00Z\",\n  \"resource_uri\": \"/resources/Resource/1/\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "13ea4338-1841-4433-92d0-3a852d2c4a9b",
+          "name": "Get Order",
+          "request": {
+            "name": "Get Order",
+            "description": {
+              "content": "Returns a single Order object by its numeric id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Order",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>,<string>",
+                  "description": "Comma-separated list of direct resource attributes to return (e.g. `id,name,price`)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Numeric resource identifier."
+                },
+                {
+                  "description": "The customer's Revel subdomain",
+                  "type": "any",
+                  "value": "{{subdomain}}",
+                  "key": "subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ea7f2a2-a254-4518-960c-305c904c7698",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Order",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    },
+                    {
+                      "description": "The customer's Revel subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "API-AUTHENTICATION",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"uuid\": \"a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d\",\n  \"establishment\": 1,\n  \"customer\": 1,\n  \"created_by\": 1,\n  \"call_number\": 42,\n  \"call_name\": \"Window\",\n  \"running_tax_number\": 42,\n  \"web_order\": true,\n  \"is_invoice\": true,\n  \"closed\": true,\n  \"printed\": true,\n  \"has_items\": true,\n  \"has_history\": true,\n  \"dining_option\": 42,\n  \"delivery_employee\": 42,\n  \"device_id\": 1,\n  \"local_id\": \"LOC-1\",\n  \"pickup_time\": \"2026-06-01T12:00:00Z\",\n  \"created_date\": \"2026-06-01T12:00:00Z\",\n  \"updated_date\": \"2026-06-01T12:00:00Z\",\n  \"resource_uri\": \"/resources/Resource/1/\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57ab9d0f-72a7-4d51-86b3-eb0c198044e2",
+              "name": "Authentication failed or was not provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Order",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    },
+                    {
+                      "description": "The customer's Revel subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "API-AUTHENTICATION",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3b4d11a9-a9e2-4733-9e53-8c17ec8a0c23",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Order",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    },
+                    {
+                      "description": "The customer's Revel subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "API-AUTHENTICATION",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bdc6b4e6-ac63-4109-ae19-ae16e34b1109",
+          "name": "Update Order",
+          "request": {
+            "name": "Update Order",
+            "description": {
+              "content": "Partially updates an existing Order object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Order",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Numeric resource identifier."
+                },
+                {
+                  "description": "The customer's Revel subdomain",
+                  "type": "any",
+                  "value": "{{subdomain}}",
+                  "key": "subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"uuid\": \"<uuid>\",\n  \"establishment\": \"<integer>\",\n  \"customer\": \"<integer>\",\n  \"created_by\": \"<integer>\",\n  \"call_number\": \"<integer>\",\n  \"call_name\": \"<string>\",\n  \"running_tax_number\": \"<integer>\",\n  \"web_order\": \"<boolean>\",\n  \"is_invoice\": \"<boolean>\",\n  \"closed\": \"<boolean>\",\n  \"printed\": \"<boolean>\",\n  \"has_items\": \"<boolean>\",\n  \"has_history\": \"<boolean>\",\n  \"dining_option\": \"<integer>\",\n  \"delivery_employee\": \"<integer>\",\n  \"device_id\": \"<integer>\",\n  \"local_id\": \"<string>\",\n  \"pickup_time\": \"<dateTime>\",\n  \"created_date\": \"<dateTime>\",\n  \"updated_date\": \"<dateTime>\",\n  \"resource_uri\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ac6eccf4-99d9-40f5-be88-83d2ff94f434",
+              "name": "Order updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Order",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    },
+                    {
+                      "description": "The customer's Revel subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "API-AUTHENTICATION",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"uuid\": \"a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d\",\n  \"establishment\": 1,\n  \"customer\": 1,\n  \"created_by\": 1,\n  \"call_number\": 42,\n  \"call_name\": \"Window\",\n  \"running_tax_number\": 42,\n  \"web_order\": true,\n  \"is_invoice\": true,\n  \"closed\": true,\n  \"printed\": true,\n  \"has_items\": true,\n  \"has_history\": true,\n  \"dining_option\": 42,\n  \"delivery_employee\": 42,\n  \"device_id\": 1,\n  \"local_id\": \"LOC-1\",\n  \"pickup_time\": \"2026-06-01T12:00:00Z\",\n  \"created_date\": \"2026-06-01T12:00:00Z\",\n  \"updated_date\": \"2026-06-01T12:00:00Z\",\n  \"resource_uri\": \"/resources/Resource/1/\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"uuid\": \"a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d\",\n  \"establishment\": 1,\n  \"customer\": 1,\n  \"created_by\": 1,\n  \"call_number\": 42,\n  \"call_name\": \"Window\",\n  \"running_tax_number\": 42,\n  \"web_order\": true,\n  \"is_invoice\": true,\n  \"closed\": true,\n  \"printed\": true,\n  \"has_items\": true,\n  \"has_history\": true,\n  \"dining_option\": 42,\n  \"delivery_employee\": 42,\n  \"device_id\": 1,\n  \"local_id\": \"LOC-1\",\n  \"pickup_time\": \"2026-06-01T12:00:00Z\",\n  \"created_date\": \"2026-06-01T12:00:00Z\",\n  \"updated_date\": \"2026-06-01T12:00:00Z\",\n  \"resource_uri\": \"/resources/Resource/1/\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c4058a84-a255-4bb6-9b4e-f59800e4bc4e",
+              "name": "Authentication failed or was not provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Order",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    },
+                    {
+                      "description": "The customer's Revel subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "API-AUTHENTICATION",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"uuid\": \"a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d\",\n  \"establishment\": 1,\n  \"customer\": 1,\n  \"created_by\": 1,\n  \"call_number\": 42,\n  \"call_name\": \"Window\",\n  \"running_tax_number\": 42,\n  \"web_order\": true,\n  \"is_invoice\": true,\n  \"closed\": true,\n  \"printed\": true,\n  \"has_items\": true,\n  \"has_history\": true,\n  \"dining_option\": 42,\n  \"delivery_employee\": 42,\n  \"device_id\": 1,\n  \"local_id\": \"LOC-1\",\n  \"pickup_time\": \"2026-06-01T12:00:00Z\",\n  \"created_date\": \"2026-06-01T12:00:00Z\",\n  \"updated_date\": \"2026-06-01T12:00:00Z\",\n  \"resource_uri\": \"/resources/Resource/1/\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "78dcd442-6470-431a-863b-a4abda64ffea",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Order",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    },
+                    {
+                      "description": "The customer's Revel subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "API-AUTHENTICATION",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"uuid\": \"a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d\",\n  \"establishment\": 1,\n  \"customer\": 1,\n  \"created_by\": 1,\n  \"call_number\": 42,\n  \"call_name\": \"Window\",\n  \"running_tax_number\": 42,\n  \"web_order\": true,\n  \"is_invoice\": true,\n  \"closed\": true,\n  \"printed\": true,\n  \"has_items\": true,\n  \"has_history\": true,\n  \"dining_option\": 42,\n  \"delivery_employee\": 42,\n  \"device_id\": 1,\n  \"local_id\": \"LOC-1\",\n  \"pickup_time\": \"2026-06-01T12:00:00Z\",\n  \"created_date\": \"2026-06-01T12:00:00Z\",\n  \"updated_date\": \"2026-06-01T12:00:00Z\",\n  \"resource_uri\": \"/resources/Resource/1/\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The customer's Revel subdomain",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yoursubdomain",
+      "key": "subdomain"
+    },
+    {
+      "type": "string",
+      "value": "https://{{subdomain}}.revelup.com/resources",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "API-AUTHENTICATION"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d0b63d83-3b9d-41ab-870f-150266033852",
+    "name": "Revel Open Customers Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Revel Open API is the REST interface for the Revel Systems cloud iPad point-of-sale platform for restaurants and retailers. It exposes core POS resources such as orders, order items, products, product modifiers, customers, establishments, employees, and labor-scheduling records. The API is built on Django Tastypie conventions: list responses return an `objects` array alongside a `meta` pagination envelope, and filtering uses Django field-lookup syntax (e.g. `id__lt`, `created_date__range`, `name__icontains`). Each Revel customer is served from a dedicated subdomain (`https://{subdomain}.revelup.com/resources/`); a shared sandbox is hosted at `https://api-sandbox-revel.revelup.com/resources/`.\n\nContact Support:\n Name: Revel Systems Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
