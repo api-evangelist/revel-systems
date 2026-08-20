@@ -22,6 +22,11 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/revel-systems.png
 tags:
+  - Point-of-Sale
+  - Restaurant
+  - Retail
+  - iPad
+tags_raw:
   - POS
   - Restaurant
   - Retail
@@ -38,6 +43,10 @@ apis:
     HTTPS endpoints via POST. Payloads are signed with an HMAC-SHA1 X-Revel-Signature header.
   humanURL: https://developer.revelsystems.com/revelsystems/docs/webhooks
   tags:
+  - Webhook
+  - Event
+  - Point-of-Sale
+  tags_raw:
   - Webhooks
   - Events
   - POS
@@ -166,6 +175,8 @@ apis:
   humanURL: https://developer.revelsystems.com/revelsystems/reference/welcome
   baseURL: https://yoursubdomain.revelup.com/resources
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -216,6 +227,8 @@ apis:
   humanURL: https://developer.revelsystems.com/revelsystems/reference/welcome
   baseURL: https://yoursubdomain.revelup.com/resources
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
