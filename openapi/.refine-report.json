@@ -17,6 +17,13 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "revel-systems-customers-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "revel-systems-establishments-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "revel-systems-orders-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "revel-systems-products-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "revel-systems-scheduling-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }
