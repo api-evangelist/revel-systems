@@ -7,6 +7,18 @@ description: >-
   customers, employees, inventory, schedules, and reporting via a REST interface for partner integrations. The API
   follows Django Tastypie conventions (objects/meta list envelope, field-lookup filtering) and is complemented by an
   HMAC-signed webhook channel.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
