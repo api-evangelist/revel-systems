@@ -34,7 +34,7 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/revel-systems.png
 tags:
-  - POS
+  - Point-of-Sale
   - Restaurant
   - Retail
   - iPad
@@ -57,7 +57,7 @@ apis:
   tags:
   - Webhook
   - Event
-  - POS
+  - Point-of-Sale
   tags_raw:
   - Webhooks
   - Events
