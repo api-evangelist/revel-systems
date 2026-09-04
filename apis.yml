@@ -2,11 +2,10 @@ aid: revel-systems
 url: https://raw.githubusercontent.com/api-evangelist/revel-systems/refs/heads/main/apis.yml
 name: Revel Systems
 kind: company
-description: >-
-  Revel Systems is a cloud iPad-based POS for restaurants and retailers. The Revel Open API exposes products, orders,
-  customers, employees, inventory, schedules, and reporting via a REST interface for partner integrations. The API
-  follows Django Tastypie conventions (objects/meta list envelope, field-lookup filtering) and is complemented by an
-  HMAC-signed webhook channel.
+description: Revel Systems is a cloud iPad-based POS for restaurants and retailers. The Revel Open API exposes products,
+  orders, customers, employees, inventory, schedules, and reporting via a REST interface for partner integrations.
+  The API follows Django Tastypie conventions (objects/meta list envelope, field-lookup filtering) and is complemented
+  by an HMAC-signed webhook channel.
 deliveryModel:
   model: saas
   open_source: false
@@ -21,38 +20,38 @@ deliveryModel:
   method: derived
 accessModel:
   pricing: unknown
-  onboarding: self-serve
+  onboarding: unknown
   trial: false
   try_now: false
   public: false
-  label: Self-serve signup
-  confidence: high
+  label: Unknown
+  confidence: low
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/revel-systems.png
 tags:
-  - Point-of-Sale
-  - Restaurant
-  - Retail
-  - iPad
+- Point-of-Sale
+- Restaurant
+- Retail
+- iPad
 tags_raw:
-  - POS
-  - Restaurant
-  - Retail
-  - iPad
+- POS
+- Restaurant
+- Retail
+- iPad
 created: '2026-05-08'
 modified: '2026-06-03'
 specificationVersion: '0.23'
 apis:
 - aid: revel:webhooks
   name: Revel Webhooks
-  description: >-
-    Event-driven webhook channel that delivers POS events (order finalized, customer created/updated,
-    stock changes, menu updates, timesheet changes, integration changes, reward cards, and ping) to partner
-    HTTPS endpoints via POST. Payloads are signed with an HMAC-SHA1 X-Revel-Signature header.
+  description: Event-driven webhook channel that delivers POS events (order finalized, customer created/updated,
+    stock changes, menu updates, timesheet changes, integration changes, reward cards, and ping) to partner HTTPS
+    endpoints via POST. Payloads are signed with an HMAC-SHA1 X-Revel-Signature header.
   humanURL: https://developer.revelsystems.com/revelsystems/docs/webhooks
   tags:
   - Webhook
@@ -335,71 +334,104 @@ apis:
     url: rate-limits/revel-systems-rate-limits.yml
   - type: FinOps
     url: finops/revel-systems-finops.yml
-common:
-  - type: AgenticAccess
-    url: agentic-access/revel-systems-agentic-access.yml
-  - type: DomainSecurity
-    url: security/revel-systems-domain-security.yml
+- aid: revel-systems:revel-api
+  name: Revel Systems API
+  description: REST API for the Revel Systems iPad POS platform, covering orders, payments, products, inventory,
+    customers, employees, scheduling, cash management, discounts, tax, tables, purchase orders, house accounts,
+    and web orders. Approximately 140 public endpoints return JSON responses and support GET, POST, PUT, PATCH,
+    and DELETE methods.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://[yoursubdomain].revelup.com/resources/
+  humanURL: https://developer.revelsystems.com/
+  overlays: []
+  contact:
+  - FN: Revel Systems Developer Support
+    url: https://support.revelsystems.com/
+  tags:
+  - Point-of-Sale
+  - Order
+  - Payments
+  - Inventory
+  - Loyalty
+  - Restaurant
+  - Retail
+  tags_raw:
+  - POS
+  - Orders
+  - Payments
+  - Inventory
+  - Loyalty
+  - Restaurant
+  - Retail
+  properties:
+  - type: Documentation
+    url: https://developer.revelsystems.com/revelsystems/docs/rest-api
   - type: Authentication
-    url: authentication/revel-systems-authentication.yml
-  - type: GitHubOrganization
-    url: https://github.com/RevelSystems
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/revel-systems
-  - type: Website
-    url: https://revelsystems.com/
-  - type: Developer
-    url: https://developer.revelsystems.com/
-  - type: FAQ
-    url: https://developer.revelsystems.com/revelsystems/docs/frequently-asked-questions
-  - type: SpectralRules
-    url: rules/revel-systems-rules.yml
-  - type: Vocabulary
-    url: vocabulary/revel-systems-vocabulary.yml
-  - type: Plans
-    url: plans/revel-systems-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/revel-systems-rate-limits.yml
-  - type: FinOps
-    url: finops/revel-systems-finops.yml
-  - type: Features
-    data:
-      - name: Tastypie REST Conventions
-        description: >-
-          List endpoints return an objects array with a meta pagination envelope (total_count, limit, offset, next,
-          previous).
-      - name: Field-Lookup Filtering
-        description: Filter resources with Django-style lookups (e.g. id__lt, created_date__range, name__icontains).
-      - name: Field Selection and Expansion
-        description: >-
-          Use the fields parameter to limit returned attributes and expand to inline one level of foreign-key
-          relationships.
-      - name: Batch Retrieval
-        description: Retrieve multiple records by ID in a single call using the set/id1;id2;id3 path form.
-      - name: Signed Webhooks
-        description: Real-time event delivery secured with HMAC-SHA1 signatures and per-event-type endpoint registration.
-  - type: UseCases
-    data:
-      - name: Order Synchronization
-        description: >-
-          Sync finalized orders into accounting, ERP, or analytics systems via the Order resource and order.finalized
-          webhook.
-      - name: Catalog Management
-        description: Create and maintain products, modifiers, and combo sets across establishments.
-      - name: Customer and Loyalty
-        description: Sync customer profiles and loyalty/reward data with marketing and CRM platforms.
-      - name: Labor and Scheduling
-        description: Read and write employee shifts and timesheets via TimeSchedule, TimeScheduleRule, and TimeSheetEntry.
-      - name: Inventory Monitoring
-        description: React to stock-status changes in real time via the inout.stock webhook.
-  - type: Integrations
-    data:
-      - name: Accounting and ERP
-        description: Push order and sales data into accounting and ERP systems.
-      - name: Payments
-        description: Establishment-level payment configuration including ACH for US establishments.
-      - name: Marketing and CRM
-        description: Sync customer and loyalty data with marketing platforms.
+    url: https://developer.revelsystems.com/revelsystems/docs/api-platform-authentication
+common:
+- type: AgenticAccess
+  url: agentic-access/revel-systems-agentic-access.yml
+- type: DomainSecurity
+  url: security/revel-systems-domain-security.yml
+- type: Authentication
+  url: authentication/revel-systems-authentication.yml
+- type: GitHubOrganization
+  url: https://github.com/RevelSystems
+- type: LinkedIn
+  url: https://www.linkedin.com/company/revel-systems
+- type: Website
+  url: https://revelsystems.com/
+- type: Developer
+  url: https://developer.revelsystems.com/
+- type: FAQ
+  url: https://developer.revelsystems.com/revelsystems/docs/frequently-asked-questions
+- type: SpectralRules
+  url: rules/revel-systems-rules.yml
+- type: Vocabulary
+  url: vocabulary/revel-systems-vocabulary.yml
+- type: Plans
+  url: plans/revel-systems-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/revel-systems-rate-limits.yml
+- type: FinOps
+  url: finops/revel-systems-finops.yml
+- type: Features
+  data:
+  - name: Tastypie REST Conventions
+    description: List endpoints return an objects array with a meta pagination envelope (total_count, limit, offset,
+      next, previous).
+  - name: Field-Lookup Filtering
+    description: Filter resources with Django-style lookups (e.g. id__lt, created_date__range, name__icontains).
+  - name: Field Selection and Expansion
+    description: Use the fields parameter to limit returned attributes and expand to inline one level of foreign-key
+      relationships.
+  - name: Batch Retrieval
+    description: Retrieve multiple records by ID in a single call using the set/id1;id2;id3 path form.
+  - name: Signed Webhooks
+    description: Real-time event delivery secured with HMAC-SHA1 signatures and per-event-type endpoint registration.
+- type: UseCases
+  data:
+  - name: Order Synchronization
+    description: Sync finalized orders into accounting, ERP, or analytics systems via the Order resource and order.finalized
+      webhook.
+  - name: Catalog Management
+    description: Create and maintain products, modifiers, and combo sets across establishments.
+  - name: Customer and Loyalty
+    description: Sync customer profiles and loyalty/reward data with marketing and CRM platforms.
+  - name: Labor and Scheduling
+    description: Read and write employee shifts and timesheets via TimeSchedule, TimeScheduleRule, and TimeSheetEntry.
+  - name: Inventory Monitoring
+    description: React to stock-status changes in real time via the inout.stock webhook.
+- type: Integrations
+  data:
+  - name: Accounting and ERP
+    description: Push order and sales data into accounting and ERP systems.
+  - name: Payments
+    description: Establishment-level payment configuration including ACH for US establishments.
+  - name: Marketing and CRM
+    description: Sync customer and loyalty data with marketing platforms.
+- type: Blog
+  url: https://revelsystems.com/blog/
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
