@@ -1,11 +1,7 @@
 {
   "provider": "revel-systems",
   "sources": [
-    "revel-systems-customers-api-openapi.yml",
-    "revel-systems-establishments-api-openapi.yml",
-    "revel-systems-orders-api-openapi.yml",
-    "revel-systems-products-api-openapi.yml",
-    "revel-systems-scheduling-api-openapi.yml"
+    "_ae-authored/revel-open-api-openapi.yml"
   ],
   "outputs": [
     "revel-systems-customers-api-openapi.yml",
@@ -18,12 +14,15 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "revel-systems-customers-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "revel-systems-establishments-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "revel-systems-orders-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "revel-systems-products-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "revel-systems-scheduling-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "revel-open-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "revel-systems-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "revel-systems-establishments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "revel-systems-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "revel-systems-products-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "revel-systems-scheduling-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
