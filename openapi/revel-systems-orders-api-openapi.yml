@@ -353,6 +353,38 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Meta:
+      type: object
+      description: Tastypie pagination envelope.
+      properties:
+        total_count:
+          type: integer
+          example: 142
+        limit:
+          type: integer
+          example: 20
+        offset:
+          type: integer
+          example: 0
+        next:
+          type:
+          - string
+          - 'null'
+          example: /resources/Order/?limit=20&offset=20
+        previous:
+          type:
+          - string
+          - 'null'
+          example: null
+    OrderList:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        objects:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
     Order:
       type: object
       x-schema-source: documentation
@@ -449,45 +481,6 @@ components:
         resource_uri:
           type: string
           example: /resources/Resource/1/
-    OrderList:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/Meta'
-        objects:
-          type: array
-          items:
-            $ref: '#/components/schemas/Order'
-    Meta:
-      type: object
-      description: Tastypie pagination envelope.
-      properties:
-        total_count:
-          type: integer
-          example: 142
-        limit:
-          type: integer
-          example: 20
-        offset:
-          type: integer
-          example: 0
-        next:
-          type:
-          - string
-          - 'null'
-          example: /resources/Order/?limit=20&offset=20
-        previous:
-          type:
-          - string
-          - 'null'
-          example: null
-  responses:
-    Unauthorized:
-      description: Authentication failed or was not provided.
-    NotFound:
-      description: The requested resource was not found.
-    RateLimited:
-      description: Too many requests. Honor the Retry-After header and back off.
   parameters:
     fields:
       name: fields
@@ -499,6 +492,13 @@ components:
           type: string
       style: form
       explode: false
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of objects to return per page. Use `0` to disable pagination.
+      schema:
+        type: integer
+        default: 20
     idPath:
       name: id
       in: path
@@ -513,13 +513,13 @@ components:
       schema:
         type: integer
         default: 0
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of objects to return per page. Use `0` to disable pagination.
-      schema:
-        type: integer
-        default: 20
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+    RateLimited:
+      description: Too many requests. Honor the Retry-After header and back off.
+    Unauthorized:
+      description: Authentication failed or was not provided.
   securitySchemes:
     apiAuthentication:
       type: apiKey
