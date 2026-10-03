@@ -225,7 +225,55 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    idPath:
+      name: id
+      in: path
+      required: true
+      description: Numeric resource identifier.
+      schema:
+        type: integer
+    offset:
+      name: offset
+      in: query
+      description: Zero-based offset of the first object to return.
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of objects to return per page. Use `0` to disable pagination.
+      schema:
+        type: integer
+        default: 20
+    fields:
+      name: fields
+      in: query
+      description: Comma-separated list of direct resource attributes to return (e.g. `id,name,price`).
+      schema:
+        type: array
+        items:
+          type: string
+      style: form
+      explode: false
+  responses:
+    RateLimited:
+      description: Too many requests. Honor the Retry-After header and back off.
+    Unauthorized:
+      description: Authentication failed or was not provided.
+    NotFound:
+      description: The requested resource was not found.
   schemas:
+    CustomerList:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        objects:
+          type: array
+          items:
+            $ref: '#/components/schemas/Customer'
     Meta:
       type: object
       description: Tastypie pagination envelope.
@@ -249,15 +297,6 @@ components:
           - string
           - 'null'
           example: null
-    CustomerList:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/Meta'
-        objects:
-          type: array
-          items:
-            $ref: '#/components/schemas/Customer'
     Customer:
       type: object
       x-schema-source: documentation
@@ -312,45 +351,6 @@ components:
         resource_uri:
           type: string
           example: /resources/Resource/1/
-  parameters:
-    fields:
-      name: fields
-      in: query
-      description: Comma-separated list of direct resource attributes to return (e.g. `id,name,price`).
-      schema:
-        type: array
-        items:
-          type: string
-      style: form
-      explode: false
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of objects to return per page. Use `0` to disable pagination.
-      schema:
-        type: integer
-        default: 20
-    offset:
-      name: offset
-      in: query
-      description: Zero-based offset of the first object to return.
-      schema:
-        type: integer
-        default: 0
-    idPath:
-      name: id
-      in: path
-      required: true
-      description: Numeric resource identifier.
-      schema:
-        type: integer
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-    RateLimited:
-      description: Too many requests. Honor the Retry-After header and back off.
-    Unauthorized:
-      description: Authentication failed or was not provided.
   securitySchemes:
     apiAuthentication:
       type: apiKey
