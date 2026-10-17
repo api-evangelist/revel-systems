@@ -280,15 +280,6 @@ components:
         resource_uri:
           type: string
           example: /resources/Resource/1/
-    CustomerList:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/Meta'
-        objects:
-          type: array
-          items:
-            $ref: '#/components/schemas/Customer'
     Meta:
       type: object
       description: Tastypie pagination envelope.
@@ -312,21 +303,16 @@ components:
           - string
           - 'null'
           example: null
-  responses:
-    Unauthorized:
-      description: Authentication failed or was not provided.
-    NotFound:
-      description: The requested resource was not found.
-    RateLimited:
-      description: Too many requests. Honor the Retry-After header and back off.
+    CustomerList:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        objects:
+          type: array
+          items:
+            $ref: '#/components/schemas/Customer'
   parameters:
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of objects to return per page. Use `0` to disable pagination.
-      schema:
-        type: integer
-        default: 20
     idPath:
       name: id
       in: path
@@ -334,6 +320,20 @@ components:
       description: Numeric resource identifier.
       schema:
         type: integer
+    offset:
+      name: offset
+      in: query
+      description: Zero-based offset of the first object to return.
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of objects to return per page. Use `0` to disable pagination.
+      schema:
+        type: integer
+        default: 20
     fields:
       name: fields
       in: query
@@ -344,13 +344,13 @@ components:
           type: string
       style: form
       explode: false
-    offset:
-      name: offset
-      in: query
-      description: Zero-based offset of the first object to return.
-      schema:
-        type: integer
-        default: 0
+  responses:
+    Unauthorized:
+      description: Authentication failed or was not provided.
+    RateLimited:
+      description: Too many requests. Honor the Retry-After header and back off.
+    NotFound:
+      description: The requested resource was not found.
   securitySchemes:
     apiAuthentication:
       type: apiKey

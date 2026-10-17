@@ -130,38 +130,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    TimeScheduleList:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/Meta'
-        objects:
-          type: array
-          items:
-            $ref: '#/components/schemas/TimeSchedule'
-    Meta:
-      type: object
-      description: Tastypie pagination envelope.
-      properties:
-        total_count:
-          type: integer
-          example: 142
-        limit:
-          type: integer
-          example: 20
-        offset:
-          type: integer
-          example: 0
-        next:
-          type:
-          - string
-          - 'null'
-          example: /resources/Order/?limit=20&offset=20
-        previous:
-          type:
-          - string
-          - 'null'
-          example: null
     TimeSchedule:
       type: object
       description: Represents a scheduled employee shift within an establishment.
@@ -208,10 +176,46 @@ components:
         resource_uri:
           type: string
           example: /resources/Resource/1/
-  responses:
-    Unauthorized:
-      description: Authentication failed or was not provided.
+    Meta:
+      type: object
+      description: Tastypie pagination envelope.
+      properties:
+        total_count:
+          type: integer
+          example: 142
+        limit:
+          type: integer
+          example: 20
+        offset:
+          type: integer
+          example: 0
+        next:
+          type:
+          - string
+          - 'null'
+          example: /resources/Order/?limit=20&offset=20
+        previous:
+          type:
+          - string
+          - 'null'
+          example: null
+    TimeScheduleList:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        objects:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeSchedule'
   parameters:
+    offset:
+      name: offset
+      in: query
+      description: Zero-based offset of the first object to return.
+      schema:
+        type: integer
+        default: 0
     limit:
       name: limit
       in: query
@@ -229,13 +233,9 @@ components:
           type: string
       style: form
       explode: false
-    offset:
-      name: offset
-      in: query
-      description: Zero-based offset of the first object to return.
-      schema:
-        type: integer
-        default: 0
+  responses:
+    Unauthorized:
+      description: Authentication failed or was not provided.
   securitySchemes:
     apiAuthentication:
       type: apiKey

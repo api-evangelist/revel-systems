@@ -246,13 +246,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    Unauthorized:
-      description: Authentication failed or was not provided.
-    NotFound:
-      description: The requested resource was not found.
-    RateLimited:
-      description: Too many requests. Honor the Retry-After header and back off.
   schemas:
     ProductList:
       type: object
@@ -263,29 +256,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Product'
-    Meta:
-      type: object
-      description: Tastypie pagination envelope.
-      properties:
-        total_count:
-          type: integer
-          example: 142
-        limit:
-          type: integer
-          example: 20
-        offset:
-          type: integer
-          example: 0
-        next:
-          type:
-          - string
-          - 'null'
-          example: /resources/Order/?limit=20&offset=20
-        previous:
-          type:
-          - string
-          - 'null'
-          example: null
     Product:
       type: object
       x-schema-source: documentation
@@ -372,14 +342,30 @@ components:
         resource_uri:
           type: string
           example: /resources/Resource/1/
+    Meta:
+      type: object
+      description: Tastypie pagination envelope.
+      properties:
+        total_count:
+          type: integer
+          example: 142
+        limit:
+          type: integer
+          example: 20
+        offset:
+          type: integer
+          example: 0
+        next:
+          type:
+          - string
+          - 'null'
+          example: /resources/Order/?limit=20&offset=20
+        previous:
+          type:
+          - string
+          - 'null'
+          example: null
   parameters:
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of objects to return per page. Use `0` to disable pagination.
-      schema:
-        type: integer
-        default: 20
     idPath:
       name: id
       in: path
@@ -387,6 +373,13 @@ components:
       description: Numeric resource identifier.
       schema:
         type: integer
+    offset:
+      name: offset
+      in: query
+      description: Zero-based offset of the first object to return.
+      schema:
+        type: integer
+        default: 0
     fields:
       name: fields
       in: query
@@ -397,13 +390,20 @@ components:
           type: string
       style: form
       explode: false
-    offset:
-      name: offset
+    limit:
+      name: limit
       in: query
-      description: Zero-based offset of the first object to return.
+      description: Maximum number of objects to return per page. Use `0` to disable pagination.
       schema:
         type: integer
-        default: 0
+        default: 20
+  responses:
+    Unauthorized:
+      description: Authentication failed or was not provided.
+    RateLimited:
+      description: Too many requests. Honor the Retry-After header and back off.
+    NotFound:
+      description: The requested resource was not found.
   securitySchemes:
     apiAuthentication:
       type: apiKey
