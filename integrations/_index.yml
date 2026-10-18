@@ -40,5 +40,5 @@
     - connectors/applications/revel-systems
     vendor_link: https://revelsystems.com/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
