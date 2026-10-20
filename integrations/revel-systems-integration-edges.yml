@@ -1,10 +1,18 @@
-generated: '2026-10-14'
+generated: '2026-10-20'
 method: searched
+source:
+- olo/integrations/olo-integration-edges.yml
+- https://revelsystems.com/marketplace/
 checked:
 - https://fivetran.com/docs-sitemap.xml
 - https://fivetran.com/docs/connectors/partner-built-program
 - https://revelsystems.com/marketplace/
 - olo/integrations/olo-integration-edges.yml
+- https://composio.dev/toolkits/revel-systems
+- https://monid.ai/tools/revel-systems
+- https://n8n.io/integrations/revel-systems/
+- https://zapier.com/apps/revel-systems/integrations
+summary: null
 marketplace_apps:
 - marketplace: own
   channel: partner-built
@@ -58,5 +66,4 @@ edges:
     builder: Fivetran
   detected_by: sweep-data-integration.py
   first_seen: '2026-10-18'
-source:
-- olo/integrations/olo-integration-edges.yml
+templates: []
